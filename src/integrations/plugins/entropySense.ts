@@ -1,5 +1,5 @@
 // Plugin: entropySense - Percepção de entropia/sistemas complexos
-import { SymbiosisMode } from '../contexts/SymbiosisContext';
+// import removido: SymbiosisMode não utilizado
 
 export default function entropySense(context: any) {
   // Simula leitura de entropia

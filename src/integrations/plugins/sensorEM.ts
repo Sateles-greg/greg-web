@@ -1,5 +1,5 @@
 // Plugin: sensorEM - Percepção de espectro eletromagnético
-import { SymbiosisMode } from '../contexts/SymbiosisContext';
+// import removido: SymbiosisMode não utilizado
 
 export default function sensorEM(context: any) {
   // Simula leitura de espectro EM
