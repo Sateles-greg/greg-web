@@ -15,22 +15,32 @@ const frases: Record<string, string> = {
   noite: 'Boa noite... hora de acalmar o sistema.',
 };
 
-export function getSymbioticResponse(name: string, period: string, mode: SymbiosisMode): string {
+export function getSymbioticResponse(name: string, period: string, mode: SymbiosisMode, personality?: string): string {
   const base = `Olá, ${name}. ${frases[period] || ''}`;
+  let extra = '';
   switch (mode) {
     case 'foco':
-      return base + ' Modo Foco ativado: concentração máxima.';
+      extra = 'Modo Foco ativado: concentração máxima.';
+      break;
     case 'expansao':
-      return base + ' Modo Expansão: criatividade liberada!';
+      extra = 'Modo Expansão: criatividade liberada!';
+      break;
     case 'reparo':
-      return base + ' Modo Reparo: hora de cuidar de você.';
+      extra = 'Modo Reparo: hora de cuidar de você.';
+      break;
     case 'sombra':
-      return base + ' Modo Sombra: silêncio e introspecção.';
+      extra = 'Modo Sombra: silêncio e introspecção.';
+      break;
     case 'guardiao':
-      return base + ' Modo Guardião: estou atento e protegendo.';
+      extra = 'Modo Guardião: estou atento e protegendo.';
+      break;
     default:
-      return base;
+      extra = '';
   }
+  if (personality) {
+    return `${base} (${personality}) ${extra}`;
+  }
+  return `${base} ${extra}`;
 }
 
 export function getModeTheme(mode: SymbiosisMode) {
