@@ -1,0 +1,64 @@
+.avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1.5rem auto;
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.7);
+  box-shadow: 0 2px 24px 0 rgba(0,0,0,0.10);
+  font-size: 3rem;
+  transition: filter 0.7s cubic-bezier(.4,0,.2,1), box-shadow 0.7s cubic-bezier(.4,0,.2,1), background 0.7s cubic-bezier(.4,0,.2,1), transform 0.7s cubic-bezier(.4,0,.2,1);
+  animation: avatar-breath 2.5s infinite alternate cubic-bezier(.4,0,.2,1);
+  will-change: filter, box-shadow, background, transform;
+}
+.avatar--foco {
+  filter: brightness(1.2) drop-shadow(0 0 16px #00bcd4);
+  animation-name: avatar-pulse-foco;
+  transform: scale(1.08);
+  box-shadow: 0 0 32px 8px #00bcd4cc, 0 2px 24px 0 rgba(0,0,0,0.10);
+}
+.avatar--expansao {
+  filter: hue-rotate(60deg) drop-shadow(0 0 16px #ff9800);
+  animation-name: avatar-pulse-expansao;
+  transform: scale(1.10) rotate(-2deg);
+  box-shadow: 0 0 32px 8px #ff9800cc, 0 2px 24px 0 rgba(0,0,0,0.10);
+}
+.avatar--reparo {
+  filter: grayscale(0.2) drop-shadow(0 0 16px #4caf50);
+  animation-name: avatar-pulse-reparo;
+  transform: scale(1.04);
+  box-shadow: 0 0 32px 8px #4caf50cc, 0 2px 24px 0 rgba(0,0,0,0.10);
+}
+.avatar--sombra {
+  filter: grayscale(1) brightness(0.7);
+  animation-name: avatar-pulse-sombra;
+  transform: scale(0.97);
+  box-shadow: 0 0 32px 8px #212121cc, 0 2px 24px 0 rgba(0,0,0,0.10);
+}
+.avatar--guardiao {
+  filter: contrast(1.5) drop-shadow(0 0 16px #f44336);
+  animation-name: avatar-pulse-guardiao;
+  transform: scale(1.12) rotate(2deg);
+  box-shadow: 0 0 32px 8px #f44336cc, 0 2px 24px 0 rgba(0,0,0,0.10);
+}
+
+
+@keyframes avatar-breath {
+  0% {
+    transform: scale(1) rotate(0deg);
+    box-shadow: 0 2px 24px 0 rgba(0,0,0,0.10);
+    filter: none;
+  }
+  50% {
+    transform: scale(1.06) rotate(-1deg);
+    box-shadow: 0 0 32px 8px #00bcd455, 0 2px 24px 0 rgba(0,0,0,0.10);
+    filter: brightness(1.08);
+  }
+  100% {
+    transform: scale(1.12) rotate(1deg);
+    box-shadow: 0 0 40px 12px #00bcd433, 0 2px 24px 0 rgba(0,0,0,0.10);
+    filter: brightness(1.12);
+  }
+}

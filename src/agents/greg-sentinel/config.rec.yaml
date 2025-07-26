@@ -1,0 +1,6 @@
+ethics_mode: personalizado
+nível_reação: 3
+limites_autonomia:
+  - sem ações externas que comprometam a segurança
+  - rollback obrigatório
+resposta_padrao: simbiótica_defensiva

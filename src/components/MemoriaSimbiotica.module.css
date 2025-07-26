@@ -1,0 +1,41 @@
+.memoriaSection {
+  margin-top: 1.5rem;
+}
+.memoriaList {
+  list-style: disc inside;
+  margin-bottom: 1rem;
+}
+.memoriaItem {
+  margin-bottom: 0.5rem;
+}
+.memoriaRemove {
+  margin-left: 8px;
+  color: #f44336;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 0.95em;
+  transition: color 0.2s;
+}
+.memoriaRemove:hover {
+  color: #b71c1c;
+}
+.memoriaInput {
+  margin-right: 8px;
+  border-radius: 6px;
+  border: 1px solid #b2ebf2;
+  padding: 4px 10px;
+}
+.memoriaButton {
+  background: #00bcd4;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 2px 10px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.memoriaButton:hover {
+  background: #0097a7;
+}

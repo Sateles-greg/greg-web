@@ -1,0 +1,60 @@
+.panel {
+  margin-top: 2rem;
+  background: #e3f2fd;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 16px #00bcd422;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.panel h2, .universalTitle {
+  color: #1976d2;
+  margin-bottom: 1rem;
+}
+
+.universalForm {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.universalInput {
+  flex: 1;
+  border-radius: 6px;
+  border: 1px solid #b2ebf2;
+  padding: 6px;
+}
+
+.panel button, .universalButton {
+  background: #1976d2;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.panel button:hover, .universalButton:hover {
+  background: #125ea7;
+}
+
+.universalLoading {
+  color: #1976d2;
+}
+
+.universalResult {
+  margin-top: 10px;
+}
+
+@media (max-width: 600px) {
+  .panel {
+    padding: 1rem;
+    margin-top: 1rem;
+  }
+  .panel h2, .universalTitle {
+    font-size: 1.3rem;
+  }
+}

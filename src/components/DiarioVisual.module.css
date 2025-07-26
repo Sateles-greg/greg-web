@@ -1,0 +1,91 @@
+.diarioSection {
+  margin-top: 2rem;
+  background: linear-gradient(120deg, #e0f7fa 0%, #fff 100%);
+  border-radius: 18px;
+  padding: 24px;
+  box-shadow: 0 4px 32px #00bcd433;
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+  transition: box-shadow 0.3s;
+}
+.diarioTitle {
+  text-align: center;
+  font-weight: 700;
+  color: #0097a7;
+  letter-spacing: 1px;
+}
+.diarioForm {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 16px;
+  justify-content: center;
+}
+.diarioInput, .diarioSelect {
+  padding: 6px;
+  border-radius: 6px;
+  border: 1px solid #b2ebf2;
+  background: #f0fcff;
+}
+.diarioButton {
+  background: linear-gradient(90deg, #00bcd4 60%, #0097a7 100%);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 6px 18px;
+  font-weight: 600;
+  box-shadow: 0 2px 8px #00bcd422;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+}
+.diarioList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.diarioEmpty {
+  text-align: center;
+  color: #b0bec5;
+  font-style: italic;
+  margin-top: 24px;
+}
+.diarioItem {
+  margin-bottom: 12px;
+  background: #e0f7fa;
+  border-radius: 12px;
+  padding: 10px 14px;
+  box-shadow: 0 1px 6px #00bcd422;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  animation: fadeIn 0.5s;
+}
+.diarioData {
+  color: #0097a7;
+}
+.diarioEmocao {
+  color: #00bcd4;
+  font-weight: 600;
+}
+.diarioRemove {
+  margin-left: 12px;
+  color: #f44336;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 18px;
+  transition: color 0.2s;
+}
+@media (max-width: 600px) {
+  .diarioSection {
+    padding: 10px !important;
+    max-width: 98vw !important;
+  }
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}

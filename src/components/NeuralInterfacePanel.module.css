@@ -1,0 +1,77 @@
+.panel {
+  background: #1a1a2e;
+  border-radius: 16px;
+  padding: 2rem;
+  color: #fff;
+  box-shadow: 0 2px 16px #0008;
+  margin: 2rem 0;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.panel h2 {
+  margin-bottom: 1rem;
+}
+
+.panel button {
+  margin-right: 1rem;
+  margin-bottom: 1rem;
+  background: #6a1b9a;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.7rem 1.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.panel button:hover {
+  background: #4a1166;
+}
+
+.toast {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 1.5rem;
+  background: #222;
+  color: #fff;
+  padding: 0.8rem 2rem;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  box-shadow: 0 2px 16px #000a;
+  z-index: 10;
+  opacity: 0.95;
+  animation: fadeInOut 2.2s;
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) scale(0.95);
+  }
+  10% {
+    opacity: 1;
+    transform: translateX(-50%) scale(1.02);
+  }
+  90% {
+    opacity: 1;
+    transform: translateX(-50%) scale(1.02);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-50%) scale(0.95);
+  }
+}
+
+@media (max-width: 600px) {
+  .panel {
+    padding: 1rem;
+    margin: 1rem 0;
+  }
+
+  .panel h2 {
+    font-size: 1.3rem;
+  }
+}

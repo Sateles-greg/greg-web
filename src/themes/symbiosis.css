@@ -1,0 +1,133 @@
+:root {
+  --color-foco: #00bcd4;
+  --bg-foco: #e0f7fa;
+  --color-expansao: #ff9800;
+  --bg-expansao: #fff3e0;
+  --color-reparo: #4caf50;
+  --bg-reparo: #e8f5e9;
+  --color-sombra: #212121;
+  --bg-sombra: #bdbdbd;
+  --color-guardiao: #f44336;
+  --bg-guardiao: #ffebee;
+}
+
+
+body[data-mode] {
+  min-height: 100vh;
+  margin: 0;
+  font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+  transition: background 0.5s, color 0.5s;
+}
+body[data-mode="foco"] {
+  background: linear-gradient(135deg, #e0f7fa 0%, #b2ebf2 100%);
+  color: #00bcd4;
+}
+body[data-mode="expansao"] {
+  background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
+  color: #ff9800;
+}
+body[data-mode="reparo"] {
+  background: linear-gradient(135deg, #e8f5e9 0%, #b2dfdb 100%);
+  color: #4caf50;
+}
+body[data-mode="sombra"] {
+  background: linear-gradient(135deg, #bdbdbd 0%, #757575 100%);
+  color: #212121;
+}
+body[data-mode="guardiao"] {
+  background: linear-gradient(135deg, #ffebee 0%, #ffcdd2 100%);
+  color: #f44336;
+}
+
+.container {
+  max-width: 700px;
+  margin: 2.5rem auto;
+  background: rgba(255,255,255,0.6);
+  border-radius: 1.5rem;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.10);
+  padding: 2.5rem 2rem 2rem 2rem;
+  min-height: 70vh;
+}
+h1 {
+  font-size: 2.2rem;
+  margin-bottom: 1.2rem;
+  color: inherit;
+  text-align: left;
+  letter-spacing: 0.02em;
+}
+
+.avatar {
+  font-size: 3rem;
+  transition: filter 0.3s;
+}
+.avatar--foco { filter: brightness(1.2) drop-shadow(0 0 8px #00bcd4); }
+.avatar--expansao { filter: hue-rotate(60deg) drop-shadow(0 0 8px #ff9800); }
+.avatar--reparo { filter: grayscale(0.2) drop-shadow(0 0 8px #4caf50); }
+.avatar--sombra { filter: grayscale(1) brightness(0.7); }
+.avatar--guardiao { filter: contrast(1.5) drop-shadow(0 0 8px #f44336); }
+
+.painel-consciencia {
+  background: rgba(255,255,255,0.85);
+  border-radius: 1rem;
+  padding: 1.2rem 1.5rem;
+  margin: 1.5rem 0;
+  font-size: 1.05rem;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+  color: inherit;
+}
+.response-box {
+  min-height: 2.5rem;
+  margin: 1rem 0;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  background: rgba(0,0,0,0.04);
+  font-size: 1.1rem;
+  transition: background 0.3s;
+}
+.modes {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.2rem;
+}
+.modes button {
+  background: #fff;
+  border: 2px solid #bdbdbd;
+  border-radius: 0.5rem;
+  padding: 0.4rem 1.1rem;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #333;
+  cursor: pointer;
+  transition: border 0.2s, box-shadow 0.2s, background 0.2s;
+  outline: none;
+}
+.modes button.active, .modes button:focus {
+  border: 2px solid #00bcd4;
+  background: #e0f7fa;
+  color: #00bcd4;
+  box-shadow: 0 0 8px 2px #00bcd433;
+}
+.modes button:active {
+  background: #b2ebf2;
+}
+button[type="submit"] {
+  background: #00bcd4;
+  color: #fff;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.4rem 1.2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-left: 0.5rem;
+  transition: background 0.2s, box-shadow 0.2s;
+  outline: none;
+}
+button[type="submit"]:hover, button[type="submit"].pulse {
+  background: #0097a7;
+  box-shadow: 0 0 8px 2px #00bcd4aa;
+}
+button[type="submit"]:focus {
+  background: #4dd0e1;
+  box-shadow: 0 0 0 2px #00bcd4;
+}

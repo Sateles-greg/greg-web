@@ -1,0 +1,16 @@
+{
+  "painel_iot": "IoT Panel",
+  "ligado": "On",
+  "desligado": "Off",
+  "dispositivo": "Device",
+  "ligar": "Turn on",
+  "desligar": "Turn off",
+  "luz_escritorio": "Office Light",
+  "tomada_smart": "Smart Plug",
+  "nano_panel": "Nanotech & Quantum Control",
+  "neural_panel": "Neural Interface (Simulated)",
+  "reparar_material": "Repair Material",
+  "reconfigurar_materia": "Reconfigure Matter",
+  "transmitir_insight": "Transmit Insight",
+  "induzir_calma": "Induce Calm"
+}

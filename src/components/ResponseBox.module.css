@@ -1,0 +1,13 @@
+.responseBox {
+  background: #f5fafd;
+  border-radius: 10px;
+  padding: 1.2rem 1.5rem;
+  margin: 1.2rem 0;
+  color: #1976d2;
+  font-size: 1.1rem;
+  min-height: 2.2rem;
+  box-shadow: 0 2px 12px #00bcd411;
+  transition: background 0.2s;
+  word-break: break-word;
+  max-width: 100%;
+}

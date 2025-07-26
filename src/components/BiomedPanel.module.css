@@ -1,0 +1,58 @@
+.panel {
+  background: #f8fafc;
+  border-radius: 16px;
+  box-shadow: 0 2px 16px #0002;
+  padding: 2rem;
+  margin: 2rem 0;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.panel h2 {
+  color: #1976d2;
+  margin-bottom: 1.2rem;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.panel h3 {
+  color: #2563eb;
+  margin-bottom: 0.7rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.panel button {
+  margin-right: 1rem;
+  margin-bottom: 1rem;
+  background: #1976d2;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.7rem 1.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.panel button:hover {
+  background: #125ea7;
+}
+
+.panel ul {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+.panel li {
+  margin-bottom: 0.3rem;
+  font-size: 1rem;
+}
+
+@media (max-width: 600px) {
+  .panel {
+    padding: 1rem;
+    margin: 1rem 0;
+  }
+  .panel h2 {
+    font-size: 1.3rem;
+  }
+}

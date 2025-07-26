@@ -1,0 +1,38 @@
+.historyPanel {
+  background: #f5fafd;
+  border-radius: 10px;
+  padding: 1rem 1.2rem;
+  margin: 1.2rem 0;
+  box-shadow: 0 2px 12px #00bcd411;
+  max-width: 320px;
+  min-width: 220px;
+}
+.historyTitle {
+  color: #1976d2;
+  font-size: 1.1rem;
+  margin-bottom: 0.7rem;
+  font-weight: 600;
+}
+.historyList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.user {
+  color: #1976d2;
+  font-weight: 500;
+  margin-bottom: 0.3rem;
+}
+.greg {
+  color: #009688;
+  font-weight: 400;
+  margin-bottom: 0.3rem;
+}
+.time {
+  font-size: 0.8rem;
+  color: #90a4ae;
+  margin-right: 0.5em;
+}
+.text {
+  font-size: 1rem;
+}
