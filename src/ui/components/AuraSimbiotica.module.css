@@ -1,0 +1,36 @@
+.auraSimbiotica {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  position: absolute;
+  z-index: -1;
+}
+
+.auraZen {
+  background: radial-gradient(circle, rgba(200,255,200,0.2), transparent);
+  box-shadow: 0 0 40px rgba(144,238,144,0.3);
+  animation: pulseZen 4s infinite ease-in-out;
+}
+
+.auraFoco {
+  background: repeating-radial-gradient(circle, #1e40af 0px, #1e40af 2px, transparent 2px, transparent 4px);
+  animation: pulseFoco 2s infinite ease-in-out;
+}
+
+.auraExpansao {
+  background: conic-gradient(from 0deg, #f0abfc, #a78bfa, #f0abfc);
+  animation: spinExpansao 6s linear infinite;
+}
+
+@keyframes pulseZen {
+  0%, 100% { transform: scale(1); opacity: 0.7; }
+  50% { transform: scale(1.05); opacity: 1; }
+}
+@keyframes pulseFoco {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+@keyframes spinExpansao {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}

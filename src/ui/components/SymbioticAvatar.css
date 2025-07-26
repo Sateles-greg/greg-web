@@ -1,0 +1,40 @@
+.avatar-svg {
+  filter: drop-shadow(0 4px 32px rgba(0,0,0,0.18));
+  transition: all 0.7s cubic-bezier(.4,0,.2,1);
+  will-change: filter, transform;
+}
+.avatar-zen {
+  animation: zenPulse 3s infinite alternate;
+}
+@keyframes zenPulse {
+  0% { filter: blur(0px) drop-shadow(0 0 16px #e6d3b3); }
+  100% { filter: blur(2px) drop-shadow(0 0 32px #fffbe6); }
+}
+.avatar-estrategia {
+  animation: estrategiaGlow 2s infinite alternate;
+}
+@keyframes estrategiaGlow {
+  0% { filter: drop-shadow(0 0 8px #38bdf8); }
+  100% { filter: drop-shadow(0 0 32px #38bdf8); }
+}
+.avatar-criativo {
+  animation: criativoMorph 4s infinite alternate;
+}
+@keyframes criativoMorph {
+  0% { transform: scale(1) rotate(-2deg); }
+  100% { transform: scale(1.08) rotate(2deg); }
+}
+.avatar-emocional {
+  animation: emocionalAura 3s infinite alternate;
+}
+@keyframes emocionalAura {
+  0% { filter: drop-shadow(0 0 8px #f472b6); }
+  100% { filter: drop-shadow(0 0 32px #38bdf8); }
+}
+.avatar-noturno {
+  animation: noturnoFade 5s infinite alternate;
+}
+@keyframes noturnoFade {
+  0% { opacity: 1; }
+  100% { opacity: 0.7; }
+}

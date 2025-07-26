@@ -1,0 +1,16 @@
+.painel-modos-root {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.painel-modos-fallback {
+  color: white;
+  padding: 2rem;
+  text-align: center;
+  font-size: 1.2rem;
+}
+.painel-modos-anim {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}

@@ -1,0 +1,12 @@
+.historico-section {
+  margin-top: 1.5rem;
+}
+.historico-emojis {
+  display: flex;
+  gap: 0.5rem;
+  font-size: 1.5rem;
+}
+.historico-desc {
+  margin-top: 0.5rem;
+  font-size: 1.1rem;
+}

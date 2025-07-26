@@ -1,0 +1,43 @@
+.diarioRoot {
+  padding: 1rem;
+  background: #f7f9fa;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+.inputRow {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+.input {
+  flex: 1;
+  padding: 0.5rem;
+  border-radius: 6px;
+  border: 1px solid #cfd8dc;
+}
+.button {
+  background: #43cea2;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  font-weight: bold;
+}
+.lista {
+  list-style: none;
+  padding: 0;
+}
+.item {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #e0e0e0;
+}
+.descricao {
+  font-weight: 500;
+}
+.data {
+  color: #78909c;
+  font-size: 0.9em;
+}

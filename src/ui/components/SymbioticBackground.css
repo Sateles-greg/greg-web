@@ -1,0 +1,28 @@
+.symbiotic-bg {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  overflow: hidden;
+  background: linear-gradient(120deg, #f5e9d7 0%, #e6d3b3 100%);
+  animation: bgFade 12s ease-in-out infinite alternate;
+}
+.bg-svg {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.95;
+  animation: bgMove 18s ease-in-out infinite alternate;
+}
+@keyframes bgFade {
+  0% { filter: blur(0px) brightness(1); }
+  100% { filter: blur(2px) brightness(1.08); }
+}
+@keyframes bgMove {
+  0% { transform: scale(1) translateY(0); }
+  100% { transform: scale(1.04) translateY(-20px); }
+}

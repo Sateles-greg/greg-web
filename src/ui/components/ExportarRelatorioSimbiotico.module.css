@@ -1,0 +1,9 @@
+.exportarBtn {
+  padding: 1rem;
+  margin-top: 1rem;
+  border-radius: 8px;
+  background: #1e40af;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}

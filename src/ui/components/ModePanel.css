@@ -1,0 +1,28 @@
+.mode-panel {
+  background: rgba(20, 30, 60, 0.85);
+  color: #fff;
+  border-radius: 18px;
+  padding: 24px 32px;
+  margin: 24px auto 0 auto;
+  max-width: 420px;
+  box-shadow: 0 4px 32px 0 rgba(0,0,0,0.18);
+  text-align: center;
+  transition: background 0.5s;
+}
+.mode-panel--foco {
+  background: linear-gradient(135deg, #0f2027 0%, #2c5364 100%);
+}
+.mode-panel--expansao {
+  background: linear-gradient(135deg, #43cea2 0%, #185a9d 100%);
+}
+.mode-panel--reparo {
+  background: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%);
+  color: #222;
+}
+.mode-panel--sombra {
+  background: linear-gradient(135deg, #232526 0%, #414345 100%);
+}
+.mode-panel--guardiao {
+  background: linear-gradient(135deg, #f7971e 0%, #ffd200 100%);
+  color: #222;
+}

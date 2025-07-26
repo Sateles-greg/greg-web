@@ -1,0 +1,20 @@
+.historicoContainer {
+  margin: 2rem 0;
+}
+.historicoEmpty {
+  color: #888;
+  margin: 1rem 0;
+}
+.historicoList {
+  list-style: none;
+  padding: 0;
+}
+.historicoItem {
+  padding: 4px 0;
+  border-bottom: 1px solid #eee;
+  font-size: 14px;
+}
+.historicoData {
+  color: #888;
+  font-size: 12px;
+}

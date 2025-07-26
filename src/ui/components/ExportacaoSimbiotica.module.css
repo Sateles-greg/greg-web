@@ -1,0 +1,19 @@
+.exportWrap {
+  background: #18181b;
+  border-radius: 12px;
+  padding: 24px;
+  margin: 16px 0;
+  box-shadow: 0 2px 12px #0002;
+  text-align: center;
+}
+.exportWrap button {
+  background: #22d3ee;
+  color: #18181b;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 24px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1.1em;
+  margin-top: 12px;
+}

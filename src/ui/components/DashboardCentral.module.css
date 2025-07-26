@@ -1,0 +1,27 @@
+.dashboardRoot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  padding: 32px;
+}
+.cardsContainer {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  padding: 24px;
+  min-width: 220px;
+  max-width: 320px;
+}
+@media (prefers-color-scheme: dark) {
+  .card {
+    background: #222;
+    color: #eee;
+  }
+}

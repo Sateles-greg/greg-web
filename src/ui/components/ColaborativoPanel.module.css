@@ -1,0 +1,92 @@
+.colab-form-margin {
+  margin-bottom: 12px;
+}
+.colab-title-user {
+  color: #00bcd4;
+}
+
+.colab-root {
+  background: #fff;
+  border-radius: 8px;
+  padding: 10px;
+  min-height: 80px;
+  margin-bottom: 8px;
+  box-shadow: 0 1px 6px #00bcd422;
+  max-height: 160px;
+  overflow-y: auto;
+}
+.colab-form {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+}
+.colab-input {
+  flex: 1;
+  min-width: 120px;
+  padding: 6px;
+  border-radius: 6px;
+  border: 1px solid #b2ebf2;
+  background: #f0fcff;
+}
+.colab-btn {
+  background: linear-gradient(90deg, #00bcd4 60%, #0097a7 100%);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 6px 18px;
+  font-weight: 600;
+  box-shadow: 0 2px 8px #00bcd422;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+}
+.colab-btn-danger {
+  background: linear-gradient(90deg, #f44336 60%, #c62828 100%);
+  margin-left: 8px;
+}
+.colab-btn-success {
+  background: linear-gradient(90deg, #4caf50 60%, #388e3c 100%);
+  margin-left: 8px;
+}
+.colab-label {
+  font-weight: 500;
+}
+.colab-select {
+  padding: 6px;
+  border-radius: 6px;
+  border: 1px solid #b2ebf2;
+  background: #f0fcff;
+}
+.colab-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.colab-list-item {
+  margin-bottom: 8px;
+  background: #e0f7fa;
+  border-radius: 8px;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  animation: fadeIn 0.5s;
+}
+.colab-title {
+  text-align: center;
+  font-weight: 700;
+  color: #00bcd4;
+  letter-spacing: 1px;
+}
+.colab-center {
+  text-align: center;
+}
+.colab-muted {
+  color: #b0bec5;
+  font-style: italic;
+  margin-top: 12px;
+}
+.colab-highlight {
+  color: #0097a7;
+  font-weight: 600;
+}

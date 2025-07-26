@@ -1,0 +1,66 @@
+.panelWrap {
+  background: #18181b;
+  border-radius: 12px;
+  padding: 24px;
+  margin: 16px 0;
+  box-shadow: 0 2px 12px #0002;
+}
+.formRow {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+.formRow input, .formRow select {
+  padding: 6px 8px;
+  border-radius: 6px;
+  border: 1px solid #333;
+  background: #23232b;
+  color: #fff;
+}
+.formRow button {
+  background: #22d3ee;
+  color: #18181b;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 16px;
+  cursor: pointer;
+  font-weight: bold;
+}
+.listaMissoes {
+  list-style: none;
+  padding: 0;
+}
+.listaMissoes li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #23232b;
+  margin-bottom: 8px;
+  padding: 8px 12px;
+  border-radius: 8px;
+}
+.listaMissoes li b {
+  margin-right: 8px;
+}
+.listaMissoes li span {
+  color: #6ee7b7;
+  font-size: 0.95em;
+}
+.listaMissoes li small {
+  color: #aaa;
+  margin-left: 8px;
+}
+.listaMissoes li button {
+  margin-left: auto;
+  background: #fbbf24;
+  color: #18181b;
+  border: none;
+  border-radius: 6px;
+  padding: 4px 10px;
+  cursor: pointer;
+  font-size: 0.9em;
+}
+.concluida {
+  opacity: 0.5;
+  text-decoration: line-through;
+}

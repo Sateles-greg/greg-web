@@ -1,0 +1,17 @@
+.sugestaoContainer {
+  background: #fbbf24;
+  color: #222;
+  padding: 16px;
+  border-radius: 8px;
+  margin: 1rem 0;
+  text-align: center;
+}
+.sugestaoBtn {
+  margin-left: 16px;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  border: none;
+  background: #1e40af;
+  color: #fff;
+  cursor: pointer;
+}

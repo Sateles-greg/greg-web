@@ -1,0 +1,14 @@
+.sensoresSimbioticosContainer {
+  margin: 1rem 0;
+}
+
+.sensoresSimbioticosVideo {
+  border-radius: 8px;
+  background: #222;
+}
+
+.sensoresSimbioticosInfo {
+  font-size: 12px;
+  color: #888;
+  margin-top: 8px;
+}
