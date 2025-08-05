@@ -10,6 +10,6 @@ export function getSimulatedSensorData(): SensorData {
   return {
     heartRate: 60 + Math.round(Math.random() * 40),
     attention: Math.round(Math.random() * 100),
-    soundLevel: Math.round(Math.random() * 80)
+    soundLevel: Math.round(Math.random() * 80),
   };
 }

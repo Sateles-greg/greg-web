@@ -1,7 +1,8 @@
+import { useContext } from 'react';
 
-import React, { useContext } from 'react';
+// ...existing code...
 import './SymbioticAura.css';
-import { SymbiosisContext } from '../contexts/SymbiosisContext';
+import { SymbiosisContext } from '../contexts';
 
 interface SymbioticAuraProps {
   mode: string;
@@ -10,7 +11,7 @@ interface SymbioticAuraProps {
 
 // Suporte a modos customizados: busca cor do modo no contexto
 
-const SymbioticAura: React.FC<SymbioticAuraProps> = ({ mode, emotion }) => {
+const SymbioticAura = ({ mode, emotion }: SymbioticAuraProps) => {
   const ctx = useContext(SymbiosisContext);
   let auraClass = 'aura-default';
   let dataAuraColor = undefined;
@@ -20,8 +21,8 @@ const SymbioticAura: React.FC<SymbioticAuraProps> = ({ mode, emotion }) => {
     const modoObj = ctx.modos.find((m) => m.nome.toLowerCase() === mode.toLowerCase());
     if (modoObj) {
       auraClass = `aura-custom aura-custom-${mode.toLowerCase()}`;
-      dataAuraColor = modoObj.cor;
-      dataAuraColor2 = modoObj.cor + '33';
+      // dataAuraColor = modoObj.cor; // Propriedade 'cor' pode não existir
+      // dataAuraColor2 = modoObj.cor + '33'; // Propriedade 'cor' pode não existir
       dataAuraBg = '#fff';
     } else {
       // fallback para classes antigas

@@ -1,9 +1,10 @@
-import React, { useContext, useState } from 'react';
-import { SymbiosisContext } from '../contexts/SymbiosisContext';
+import { useContext, useState } from 'react';
+// ...existing code...
+import { SymbiosisContext } from '../contexts';
 import styles from './MissoesPanel.module.css';
 import { v4 as uuidv4 } from 'uuid';
 
-const MissoesPanel: React.FC = () => {
+const MissoesPanel = () => {
   const ctx = useContext(SymbiosisContext);
   const [titulo, setTitulo] = useState('');
   const [descricao, setDescricao] = useState('');

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Compartilhamento de Tela Simbiótico</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f7fafc; margin: 0; padding: 2rem; }
+    h1 { color: #2b6cb0; }
+    #peers { display: flex; gap: 1rem; flex-wrap: wrap; }
+    video { width: 320px; height: 180px; background: #222; border-radius: 8px; box-shadow: 0 2px 8px #0002; }
+    button { margin: 1rem 0.5rem 1rem 0; padding: 0.5rem 1.2rem; border-radius: 6px; border: none; background: #3182ce; color: #fff; font-weight: bold; cursor: pointer; }
+    button:disabled { background: #a0aec0; }
+  </style>
+</head>
+<body>
+  <h1>🔗 Compartilhamento de Tela Simbiótico (WebRTC + WebSocket)</h1>
+  <button id="startBtn">Iniciar Compartilhamento</button>
+  <button id="stopBtn" disabled>Parar Compartilhamento</button>
+  <div id="peers"></div>
+  <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+  <script type="module" src="screen-sharing.js"></script>
+</body>
+</html>

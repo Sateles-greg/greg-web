@@ -14,19 +14,23 @@ export function registrarMetricas(metricas: MetricasDesempenho) {
 }
 
 export function avaliarDesempenho(): MetricasDesempenho {
-  if (historicoMetricas.length === 0) return { acuracia: 0, relevancia: 0, eficiencia: 0, impacto: 0 };
-  const soma = historicoMetricas.reduce((acc, m) => ({
-    acuracia: acc.acuracia + m.acuracia,
-    relevancia: acc.relevancia + m.relevancia,
-    eficiencia: acc.eficiencia + m.eficiencia,
-    impacto: acc.impacto + m.impacto
-  }), { acuracia: 0, relevancia: 0, eficiencia: 0, impacto: 0 });
+  if (historicoMetricas.length === 0)
+    return { acuracia: 0, relevancia: 0, eficiencia: 0, impacto: 0 };
+  const soma = historicoMetricas.reduce(
+    (acc, m) => ({
+      acuracia: acc.acuracia + m.acuracia,
+      relevancia: acc.relevancia + m.relevancia,
+      eficiencia: acc.eficiencia + m.eficiencia,
+      impacto: acc.impacto + m.impacto,
+    }),
+    { acuracia: 0, relevancia: 0, eficiencia: 0, impacto: 0 }
+  );
   const n = historicoMetricas.length;
   return {
     acuracia: soma.acuracia / n,
     relevancia: soma.relevancia / n,
     eficiencia: soma.eficiencia / n,
-    impacto: soma.impacto / n
+    impacto: soma.impacto / n,
   };
 }
 

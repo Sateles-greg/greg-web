@@ -4,6 +4,6 @@ export function analise_de_ameacas(evento?: any) {
   return {
     ameaca_detectada: evento?.tipo === 'critico',
     tipo: evento?.tipo || 'normal',
-    detalhes: evento || {}
+    detalhes: evento || {},
   };
 }

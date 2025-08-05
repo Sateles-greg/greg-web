@@ -1,5 +1,5 @@
 // Plugin colaborativo: protótipo inicial
-import signalingService from '../services/signalingService';
+import signalingService from '../../services/signalingService';
 
 let peerConnection: RTCPeerConnection | null = null;
 let dataChannel: RTCDataChannel | null = null;
@@ -14,10 +14,14 @@ export default function colaborativo({ onMessage, sendMessage }: any) {
     dataChannel.onopen = () => sendMessage && sendMessage('Canal aberto!');
     peerConnection.onicecandidate = (event) => {
       if (event.candidate) {
-        signalingService.send({ type: 'candidate', candidate: event.candidate, to: remotoId });
+        signalingService.send({
+          type: 'candidate',
+          candidate: event.candidate,
+          to: remotoId,
+        });
       }
     };
-    peerConnection.createOffer().then(offer => {
+    peerConnection.createOffer().then((offer) => {
       peerConnection!.setLocalDescription(offer);
       signalingService.send({ type: 'offer', offer, to: remotoId });
     });
@@ -32,11 +36,15 @@ export default function colaborativo({ onMessage, sendMessage }: any) {
     };
     peerConnection.onicecandidate = (event) => {
       if (event.candidate) {
-        signalingService.send({ type: 'candidate', candidate: event.candidate, to: from });
+        signalingService.send({
+          type: 'candidate',
+          candidate: event.candidate,
+          to: from,
+        });
       }
     };
     peerConnection.setRemoteDescription(offer);
-    peerConnection.createAnswer().then(answer => {
+    peerConnection.createAnswer().then((answer) => {
       peerConnection!.setLocalDescription(answer);
       signalingService.send({ type: 'answer', answer, to: from });
     });
@@ -64,6 +72,8 @@ export default function colaborativo({ onMessage, sendMessage }: any) {
     receberResposta,
     receberCandidate,
     enviarMensagem,
-    desconectar: () => { peerConnection && peerConnection.close(); },
+    desconectar: () => {
+      peerConnection && peerConnection.close();
+    },
   };
 }

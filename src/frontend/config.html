@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Configurações</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    label {
+      display: block;
+      margin: 10px 0 5px;
+    }
+    input, select, button {
+      padding: 10px;
+      margin-bottom: 20px;
+      width: 100%;
+      max-width: 400px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Configurações do Sistema</h1>
+  <form id="configForm">
+    <label for="modoAtual">Modo Atual:</label>
+    <select id="modoAtual">
+      <option value="Foco">Foco</option>
+      <option value="Expansao">Expansão</option>
+      <option value="Zen">Zen</option>
+      <option value="Reparo">Reparo</option>
+    </select>
+
+    <label for="intervaloVerificacao">Intervalo de Verificação (ms):</label>
+    <input type="number" id="intervaloVerificacao" min="1000" step="1000">
+
+    <label for="notificacoesAtivas">Notificações Ativas:</label>
+    <input type="checkbox" id="notificacoesAtivas">
+
+    <button type="submit">Salvar Configurações</button>
+  </form>
+
+  <script>
+    async function carregarConfiguracoes() {
+      const response = await fetch('/api/config');
+      const config = await response.json();
+
+      document.getElementById('modoAtual').value = config.modoAtual;
+      document.getElementById('intervaloVerificacao').value = config.intervaloVerificacao;
+      document.getElementById('notificacoesAtivas').checked = config.notificacoesAtivas;
+    }
+
+    document.getElementById('configForm').addEventListener('submit', async (event) => {
+      event.preventDefault();
+
+      const config = {
+        modoAtual: document.getElementById('modoAtual').value,
+        intervaloVerificacao: parseInt(document.getElementById('intervaloVerificacao').value, 10),
+        notificacoesAtivas: document.getElementById('notificacoesAtivas').checked,
+      };
+
+      await fetch('/api/config', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(config),
+      });
+
+      alert('Configurações salvas com sucesso!');
+    });
+
+    carregarConfiguracoes();
+  </script>
+</body>
+</html>

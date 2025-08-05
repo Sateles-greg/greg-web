@@ -1,5 +1,7 @@
 // Serviço: Otimizador de Ambiente
-export function optimizeEnvironment(goal: 'foco' | 'relaxamento' | 'recuperacao') {
+export function optimizeEnvironment(
+  goal: 'foco' | 'relaxamento' | 'recuperacao'
+) {
   switch (goal) {
     case 'foco':
       return 'Ajustando luz azul, reduzindo ruído, otimizando oxigênio.';

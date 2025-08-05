@@ -1,4 +1,4 @@
-import { useSymbiosis, SymbiosisMode } from '../contexts/SymbiosisContext';
+import { useSymbiosis, SymbiosisMode } from '../contexts';
 import styles from './SugestaoModoDominante.module.css';
 
 export default function SugestaoModoDominante() {

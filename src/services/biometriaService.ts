@@ -7,6 +7,6 @@ export async function coletarDadosBiometricos() {
     batimentos: 72,
     passos: 8000,
     humor: 'neutro',
-    produtividade: 'alta'
+    produtividade: 'alta',
   };
 }

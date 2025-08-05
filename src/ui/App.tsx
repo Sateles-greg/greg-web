@@ -1,44 +1,49 @@
-import AutoModoEmotionHandler from './components/AutoModoEmotionHandler';
-import GregDiagnosticsPanel from './components/GregDiagnosticsPanel';
+import { SymbiosisProvider } from './contexts/SymbiosisProvider';
+import { useSymbiosis } from './contexts/useSymbiosis';
 import SymbioticBackground from './components/SymbioticBackground';
-import SimbioticParticles from './components/SimbioticParticles';
-import React, { useEffect } from 'react';
-import { SymbiosisProvider, useSymbiosis } from './contexts/SymbiosisContext';
-import DashboardCentral from './components/DashboardCentral';
-import './themes/symbiosis.css';
-import SymbioticAvatar from './components/SymbioticAvatar';
-import AuraSimbiotica from './components/AuraSimbiotica';
-import './components/AvatarAuraWrapper.module.css';
-import AudioAmbienteSimbiotico from './components/AudioAmbienteSimbiotico';
+import styles from './App.module.css';
 
-const Main: React.FC = () => {
-  const { mode } = useSymbiosis();
-  useEffect(() => {
-    document.body.setAttribute('data-mode', mode);
-  }, [mode]);
+
+import PainelDeModosSimbioticos from './components/PainelDeModosSimbioticos';
+import GregDiagnosticsPanel from './components/GregDiagnosticsPanel';
+import DashboardCentral from './components/DashboardCentral';
+
+const Main = () => {
+  const { mode, status } = useSymbiosis();
+
   return (
-    <>
+    <div className={styles.app}>
       <SymbioticBackground />
-      <SimbioticParticles modo={mode} />
-      <div className="avatarAuraWrapper">
-        <AuraSimbiotica modo={mode} />
-        <SymbioticAvatar mode={mode} />
-      </div>
-      <AudioAmbienteSimbiotico modo={mode} />
-      <AutoModoEmotionHandler />
-    </>
+      <header className={styles.header}>
+        <h1>Greg</h1>
+        <div className={styles.status}>
+          <span className={`${styles.statusIndicator} ${styles[mode]}`}></span>
+          {mode} - {status}
+        </div>
+      </header>
+      <main className={styles.mainContent}>
+        <section className={styles.leftPanel}>
+          <PainelDeModosSimbioticos />
+        </section>
+        <section className={styles.centerPanel}>
+          <DashboardCentral />
+        </section>
+        <section className={styles.rightPanel}>
+          <GregDiagnosticsPanel />
+        </section>
+      </main>
+    </div>
   );
 };
 
-
-const App: React.FC = () => (
-  <>
-    <SymbiosisProvider>
-      <Main />
-    </SymbiosisProvider>
-    <DashboardCentral />
-    <GregDiagnosticsPanel />
-  </>
+const App = () => (
+  <SymbiosisProvider>
+    <Main />
+  </SymbiosisProvider>
 );
 
 export default App;
+
+// Atualizando o tipo SymbiosisContextValue para incluir 'mode', 'status', 'usoTotal' e 'lastAnalysis'
+// Adicionar as propriedades ao tipo SymbiosisContextValue
+

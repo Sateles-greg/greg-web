@@ -4,6 +4,6 @@ export async function coletarDadosIoT() {
   return [
     { tipo: 'temperatura', valor: 23.1, unidade: 'C' },
     { tipo: 'umidade', valor: 55, unidade: '%' },
-    { tipo: 'presenca', valor: true }
+    { tipo: 'presenca', valor: true },
   ];
 }

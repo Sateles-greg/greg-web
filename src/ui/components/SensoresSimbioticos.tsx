@@ -1,8 +1,8 @@
 import { useEffect, useRef } from 'react';
 import './SensoresSimbioticos.module.css';
-import { detectarTomDeVoz, conectarComWearable } from '../sensores/sensoresSimbioticos';
-import { iniciarDeteccaoFacial } from '../sensores/expressaoFacial';
-import { useSymbiosis } from '../contexts/SymbiosisContext';
+import { detectarTomDeVoz, conectarComWearable } from '../../sensores/sensoresSimbioticos';
+import { iniciarDeteccaoFacial } from '../../sensores/expressaoFacial';
+import { useSymbiosis } from '../contexts';
 
 export default function SensoresSimbioticos() {
   const { setMode } = useSymbiosis();

@@ -2,24 +2,26 @@
 export interface TuyaDevice {
   id: string;
   name: string;
-  type: string;
-  state: 'on' | 'off';
+  state: boolean;
 }
 
 // Simulação de dispositivos Tuya
 const mockDevices: TuyaDevice[] = [
-  { id: '1', name: 'Luz Sala', type: 'light', state: 'off' },
-  { id: '2', name: 'Ar Condicionado', type: 'ac', state: 'off' },
+  { id: '1', name: 'Lâmpada', state: true },
+  { id: '2', name: 'Tomada', state: false },
 ];
 
 export function listDevices(): Promise<TuyaDevice[]> {
   return Promise.resolve(mockDevices);
 }
 
-export function setDeviceState(id: string, state: 'on' | 'off'): Promise<boolean> {
-  const device = mockDevices.find(d => d.id === id);
+export function setDeviceState(
+  id: string,
+  state: 'on' | 'off'
+): Promise<boolean> {
+  const device = mockDevices.find((d) => d.id === id);
   if (device) {
-    device.state = state;
+    device.state = state === 'on';
     return Promise.resolve(true);
   }
   return Promise.resolve(false);

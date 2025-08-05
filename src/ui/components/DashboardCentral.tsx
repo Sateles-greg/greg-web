@@ -1,18 +1,18 @@
-import { gerarRelatorioAutomatico } from '../services/monitoramentoRelatorioService';
-import { traduzirGoogle, obterRotaGoogle } from '../services/integracaoGoogleService';
-import { analisarSentimento } from '../services/integracaoHuggingFaceService';
-import { coletarDadosIoT } from '../services/integracaoIoTService';
-import { avaliarEAutoajustar } from '../services/autoajusteSimbioService';
-import { gerarIdeiaInovadora } from '../services/inovacaoGenerativaService';
-import { avaliarDesempenho, autoajustarModelos } from '../services/avaliacaoAutoajusteService';
-import { sugerirInovacaoSimbio } from '../services/inovacaoSimbioService';
+import { useEffect, useState } from 'react';
+import { gerarRelatorioAutomatico } from '../../services/monitoramentoRelatorioService';
+import { traduzirGoogle, obterRotaGoogle } from '../../services/integracaoGoogleService';
+import { analisarSentimento } from '../../services/integracaoHuggingFaceService';
+import { coletarDadosIoT } from '../../services/integracaoIoTService';
+import { avaliarEAutoajustar } from '../../services/autoajusteSimbioService';
+import { gerarIdeiaInovadora } from '../../services/inovacaoGenerativaService';
+import { avaliarDesempenho, autoajustarModelos } from '../../services/avaliacaoAutoajusteService';
+import { sugerirInovacaoSimbio } from '../../services/inovacaoSimbioService';
 
 
 import Avatar from './Avatar';
-import { sincronizarCalendario } from '../services/calendarService';
-import { coletarDadosBiometricos } from '../services/biometriaService';
-import { sugerirRotina } from '../services/routineService';
-import { useEffect, useState } from 'react';
+import { sincronizarCalendario } from '../../services/calendarService';
+import { coletarDadosBiometricos } from '../../services/biometriaService';
+import { sugerirRotina } from '../../services/routineService';
 import styles from './DashboardCentral.module.css';
 import DiarioDeAtividades from './DiarioDeAtividades';
 import FeedbackSimbotico from './FeedbackSimbotico';
@@ -25,17 +25,17 @@ import SugestoesDoDia from './SugestoesDoDia';
 import PainelLegal from './PainelLegal';
 import GregVerseExplorer from './GregVerseExplorer';
 import AutoAjusteComparativo from './AutoAjusteComparativo';
-import { obterPerfil } from '../services/perfilUsuarioService';
-import { recuperarMemorias } from '../services/memoriaSimbioAdaptativa';
-import { analisarTexto, respostaSimbio } from '../services/nlpSimbioService';
-import { exportarRelatorioJSON } from '../services/exportacaoRelatorioService';
-import { auditarRelatorio } from '../services/auditoriaSimbioService';
-import { enviarNotificacaoSimbiotica } from '../services/notificacaoSimbioService';
-import { BufferInteligente } from '../services/processamentoTempoRealService';
-import { traduzirTexto } from '../services/traducaoAutomaticaService';
-import { obterRotaInteligente } from '../services/logisticaInteligenteService';
-import { gerarAlertaDiagnostico } from '../services/diagnosticoMedicoInteligenteService';
-import { criptografarDados } from '../services/segurancaSimbioService';
+import { obterPerfil } from '../../services/perfilUsuarioService';
+import { recuperarMemorias } from '../../services/memoriaSimbioAdaptativa';
+import { analisarTexto, respostaSimbio } from '../../services/nlpSimbioService';
+import { exportarRelatorioJSON } from '../../services/exportacaoRelatorioService';
+import { auditarRelatorio } from '../../services/auditoriaSimbioService';
+import { enviarNotificacaoSimbiotica } from '../../services/notificacaoSimbioService';
+import { BufferInteligente } from '../../services/processamentoTempoRealService';
+import { traduzirTexto } from '../../services/traducaoAutomaticaService';
+import { obterRotaInteligente } from '../../services/logisticaInteligenteService';
+import { gerarAlertaDiagnostico } from '../../services/diagnosticoMedicoInteligenteService';
+import { criptografarDados } from '../../services/segurancaSimbioService';
 
   // const [diagnostico, setDiagnostico] = useState<string>(''); // Removido: não utilizado
 type EventoCalendario = { evento: string; data: string };
@@ -97,50 +97,50 @@ export default function DashboardCentral() {
     <div className={styles.dashboardRoot}>
       <Avatar />
       <div className={styles.cardsContainer}>
-        <div className={styles.card}><h4>Eventos do Calendário</h4><ul>{eventos.map((e, i) => <li key={i}>{e.evento} - {e.data}</li>)}</ul></div>
-        <div className={styles.card}><h4>Biometria</h4><pre>{JSON.stringify(biometria, null, 2)}</pre></div>
-        <div className={styles.card}><h4>Rotinas Sugeridas</h4><ul>{rotinas.map((r, i) => <li key={i}>{r.rotina} - {r.motivo}</li>)}</ul></div>
-        <div className={styles.card}><h4>Relatório Automático</h4><pre>{JSON.stringify(relatorioAuto, null, 2)}</pre></div>
-        <div className={styles.card}><DiarioDeAtividades /></div>
-        <div className={styles.card}><FeedbackSimbotico /></div>
-        <div className={styles.card}><MemoriaGreg /></div>
-        <div className={styles.card}><LinhaDoTempo /></div>
-        <div className={styles.card}><RevisaoSimbiotica /></div>
-        <div className={styles.card}><EstadosMentaisGreg /></div>
-        <div className={styles.card}><PainelCiclos /></div>
-        <div className={styles.card}><SugestoesDoDia /></div>
-        <div className={styles.card}><PainelLegal /></div>
-        <div className={styles.card}><GregVerseExplorer /></div>
-        <div className={styles.card}><AutoAjusteComparativo /></div>
-        <div className={styles.card}><h4>Perfil Dinâmico</h4><pre>{JSON.stringify(perfil, null, 2)}</pre></div>
-        <div className={styles.card}><h4>Memória Simbiótica</h4><pre>{JSON.stringify(memorias, null, 2)}</pre></div>
-        <div className={styles.card}><h4>NLP & Resposta Simbiótica</h4><div>Sentimento: {sentimento}</div><div>Resposta: {respostaNLP}</div></div>
-        <div className={styles.card}><h4>Processamento em Tempo Real</h4><pre>{JSON.stringify(buffer, null, 2)}</pre></div>
-        <div className={styles.card}><h4>Tradução Automática</h4><div>{traducao}</div></div>
-        <div className={styles.card}><h4>Logística Inteligente</h4><pre>{JSON.stringify(rota, null, 2)}</pre></div>
-        <div className={styles.card}><h4>Diagnóstico Médico Inteligente</h4><div>{diagnostico}</div></div>
-        <div className={styles.card}><h4>Privacidade & Segurança</h4><div>Dados criptografados: {dadosSeguros}</div></div>
-        <div className={styles.card}><h4>Automação & Inovação Simbiótica</h4><div>Em desenvolvimento...</div></div>
-        <div className={styles.card}><h4>Avaliação & Autoajuste</h4><pre>{JSON.stringify(metricas, null, 2)}</pre><div>{ajuste}</div></div>
-        <div className={styles.card}><h4>Inovação Simbiótica</h4><div>{inovacao}</div></div>
-        <div className={styles.card}><h4>Google APIs</h4><div>Tradução: {traducaoGoogle}</div><pre>{JSON.stringify(rotaGoogle, null, 2)}</pre></div>
-        <div className={styles.card}><h4>Hugging Face</h4><div>Sentimento: {sentimentoHF}</div></div>
-        <div className={styles.card}><h4>IoT</h4><pre>{JSON.stringify(iot, null, 2)}</pre></div>
-        <div className={styles.card}><h4>Autoajuste Simbiótico</h4><div>{ajusteSimbio}</div></div>
-        <div className={styles.card}><h4>Inovação Generativa</h4><div>{ideiaGen}</div></div>
-        <div className={styles.card}>
+        <div className={styles.dashboardOverlayCard}><h4>Eventos do Calendário</h4><ul>{eventos.length ? eventos.map((e, i) => <li key={i}>{e.evento} - {e.data}</li>) : <li>Nenhum evento encontrado</li>}</ul></div>
+        <div className={styles.dashboardOverlayCard}><h4>Biometria</h4><pre>{biometria && Object.keys(biometria).length ? JSON.stringify(biometria, null, 2) : 'Sem dados biométricos'}</pre></div>
+        <div className={styles.dashboardOverlayCard}><h4>Rotinas Sugeridas</h4><ul>{rotinas.length ? rotinas.map((r, i) => <li key={i}>{r.rotina} - {r.motivo}</li>) : <li>Nenhuma rotina sugerida</li>}</ul></div>
+        <div className={styles.dashboardOverlayCard}><h4>Relatório Automático</h4><pre>{relatorioAuto ? JSON.stringify(relatorioAuto, null, 2) : 'Relatório não disponível'}</pre></div>
+        <div className={styles.dashboardOverlayCard}><DiarioDeAtividades /></div>
+        <div className={styles.dashboardOverlayCard}><FeedbackSimbotico /></div>
+        <div className={styles.dashboardOverlayCard}><MemoriaGreg /></div>
+        <div className={styles.dashboardOverlayCard}><LinhaDoTempo /></div>
+        <div className={styles.dashboardOverlayCard}><RevisaoSimbiotica /></div>
+        <div className={styles.dashboardOverlayCard}><EstadosMentaisGreg /></div>
+        <div className={styles.dashboardOverlayCard}><PainelCiclos /></div>
+        <div className={styles.dashboardOverlayCard}><SugestoesDoDia /></div>
+        <div className={styles.dashboardOverlayCard}><PainelLegal /></div>
+        <div className={styles.dashboardOverlayCard}><GregVerseExplorer /></div>
+        <div className={styles.dashboardOverlayCard}><AutoAjusteComparativo /></div>
+        <div className={styles.dashboardOverlayCard}><h4>Perfil Dinâmico</h4><pre>{perfil ? JSON.stringify(perfil, null, 2) : 'Perfil não disponível'}</pre></div>
+        <div className={styles.dashboardOverlayCard}><h4>Memória Simbiótica</h4><pre>{memorias && memorias.length ? JSON.stringify(memorias, null, 2) : 'Sem memórias'}</pre></div>
+        <div className={styles.dashboardOverlayCard}><h4>NLP & Resposta Simbiótica</h4><div>Sentimento: {sentimento || 'N/A'}</div><div>Resposta: {respostaNLP || 'N/A'}</div></div>
+        <div className={styles.dashboardOverlayCard}><h4>Processamento em Tempo Real</h4><pre>{buffer && buffer.length ? JSON.stringify(buffer, null, 2) : 'Sem dados'}</pre></div>
+        <div className={styles.dashboardOverlayCard}><h4>Tradução Automática</h4><div>{traducao || 'N/A'}</div></div>
+        <div className={styles.dashboardOverlayCard}><h4>Logística Inteligente</h4><pre>{rota ? JSON.stringify(rota, null, 2) : 'Sem rota'}</pre></div>
+        <div className={styles.dashboardOverlayCard}><h4>Diagnóstico Médico Inteligente</h4><div>{diagnostico || 'N/A'}</div></div>
+        <div className={styles.dashboardOverlayCard}><h4>Privacidade & Segurança</h4><div>Dados criptografados: {dadosSeguros || 'N/A'}</div></div>
+        <div className={styles.dashboardOverlayCard}><h4>Automação & Inovação Simbiótica</h4><div>Em desenvolvimento...</div></div>
+        <div className={styles.dashboardOverlayCard}><h4>Avaliação & Autoajuste</h4><pre>{metricas ? JSON.stringify(metricas, null, 2) : 'Sem métricas'}</pre><div>{ajuste || 'N/A'}</div></div>
+        <div className={styles.dashboardOverlayCard}><h4>Inovação Simbiótica</h4><div>{inovacao || 'N/A'}</div></div>
+        <div className={styles.dashboardOverlayCard}><h4>Google APIs</h4><div>Tradução: {traducaoGoogle || 'N/A'}</div><pre>{rotaGoogle ? JSON.stringify(rotaGoogle, null, 2) : 'Sem rota Google'}</pre></div>
+        <div className={styles.dashboardOverlayCard}><h4>Hugging Face</h4><div>Sentimento: {sentimentoHF || 'N/A'}</div></div>
+        <div className={styles.dashboardOverlayCard}><h4>IoT</h4><pre>{iot && iot.length ? JSON.stringify(iot, null, 2) : 'Sem dados IoT'}</pre></div>
+        <div className={styles.dashboardOverlayCard}><h4>Autoajuste Simbiótico</h4><div>{ajusteSimbio || 'N/A'}</div></div>
+        <div className={styles.dashboardOverlayCard}><h4>Inovação Generativa</h4><div>{ideiaGen || 'N/A'}</div></div>
+        <div className={styles.dashboardOverlayCard}>
           <h4>Ações do Relatório</h4>
           <button onClick={() => {
             try {
               exportarRelatorioJSON();
-            } catch (e) {
+            } catch {
               alert('Erro ao exportar relatório');
             }
           }}>Exportar JSON</button>
           <button onClick={() => {
             try {
               auditarRelatorio();
-            } catch (e) {
+            } catch {
               alert('Erro ao auditar relatório');
             }
           }}>Auditar Relatório</button>
@@ -148,7 +148,7 @@ export default function DashboardCentral() {
             (async () => {
               try {
                 await enviarNotificacaoSimbiotica('Relatório Greg', JSON.stringify(relatorioAuto));
-              } catch (e) {
+              } catch {
                 alert('Erro ao enviar notificação');
               }
             })();

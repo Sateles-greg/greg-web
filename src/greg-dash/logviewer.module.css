@@ -1,0 +1,12 @@
+.log {
+  background: rgba(30,30,40,0.7);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  color: #d1d5db;
+  font-size: 0.95rem;
+  max-height: 300px;
+  overflow-y: auto;
+}
+.heading {
+  font-weight: 300;
+}

@@ -11,19 +11,19 @@ export async function uploadRelatorioDrive(filePath: string) {
   }
   const auth = new google.auth.GoogleAuth({
     keyFile: process.env.GOOGLE_KEY_FILE,
-    scopes: ['https://www.googleapis.com/auth/drive.file']
+    scopes: ['https://www.googleapis.com/auth/drive.file'],
   });
   const drive = google.drive({ version: 'v3', auth });
   try {
     const res = await drive.files.create({
       requestBody: {
         name: 'relatorio-simbiotico.txt',
-        mimeType: 'text/plain'
+        mimeType: 'text/plain',
       },
       media: {
         mimeType: 'text/plain',
-        body: fs.createReadStream(filePath)
-      }
+        body: fs.createReadStream(filePath),
+      },
     });
     return res.data;
   } catch (e) {

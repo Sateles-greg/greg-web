@@ -15,5 +15,5 @@ export const quantumSafeService = {
       status: 'Canal seguro',
       verificadoEm: new Date().toISOString(),
     };
-  }
+  },
 };

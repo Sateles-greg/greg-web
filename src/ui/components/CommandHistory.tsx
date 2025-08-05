@@ -1,4 +1,4 @@
-import React from 'react';
+// ...existing code...
 import styles from './CommandHistory.module.css';
 
 export interface CommandHistoryItem {

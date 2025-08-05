@@ -1,5 +1,5 @@
-import { useCallback } from "react";
-import { simularDecisao, analisarSentimento } from "./GregAI";
+import { useCallback } from 'react';
+import { simularDecisao, analisarSentimento } from './GregAI';
 
 export function useGregAI() {
   const simular = useCallback(async (acao: string) => {

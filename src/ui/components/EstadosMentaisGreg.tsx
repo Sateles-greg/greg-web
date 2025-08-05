@@ -1,4 +1,4 @@
-import React from 'react';
+// ...existing code...
 import { useState } from 'react';
 
 const modos = [

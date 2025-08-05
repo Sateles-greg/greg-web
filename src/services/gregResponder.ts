@@ -1,10 +1,9 @@
 // gregResponder.ts - Integração simbiótica real com OpenAI GPT-4o
 import axios from 'axios';
 
-
 export function getApiUrl() {
-  if (typeof import.meta.env !== 'undefined' && import.meta.env.VITE_API_URL) {
-    return import.meta.env.VITE_API_URL;
+  if (typeof process.env.VITE_API_URL !== 'undefined') {
+    return process.env.VITE_API_URL;
   }
   return 'http://localhost:3001';
 }
@@ -17,24 +16,38 @@ export const perfisDePersonalidade: Record<string, string> = {
 };
 
 // 2. Função de Geração de Prompt Simbiótico
-export function gerarPromptSimbiotico(modoAtual: string, mensagemUsuario: string): string {
-  const estilo = perfisDePersonalidade[modoAtual] || perfisDePersonalidade["Foco"];
+export function gerarPromptSimbiotico(
+  modoAtual: string,
+  mensagemUsuario: string
+): string {
+  const estilo =
+    perfisDePersonalidade[modoAtual] || perfisDePersonalidade['Foco'];
   return `\nModo Ativo: ${modoAtual}\nEstilo de Resposta: ${estilo}\n\nMensagem do usuário:\n${mensagemUsuario}\n\nResposta:`;
 }
 
-
 // 3. Integração com OpenAI (real)
-export async function responderComoGreg(mensagem: string, modoAtual: string): Promise<string> {
+export async function responderComoGreg(
+  mensagem: string,
+  modoAtual: string
+): Promise<string> {
   try {
     const prompt = gerarPromptSimbiotico(modoAtual, mensagem);
     const apiUrl = getApiUrl();
-    const response = await axios.post(`${apiUrl}/api/greg`, { prompt, modo: modoAtual });
+    const response = await axios.post(`${apiUrl}/api/greg`, {
+      prompt,
+      modo: modoAtual,
+    });
     return response.data.result;
   } catch (err: any) {
     console.error('Erro ao acessar backend Greg/OpenAI:', err);
     if (typeof window !== 'undefined' && window.alert) {
-      window.alert('Não foi possível obter resposta do Greg/OpenAI. Tente novamente mais tarde.');
+      window.alert(
+        'Não foi possível obter resposta do Greg/OpenAI. Tente novamente mais tarde.'
+      );
     }
-    return '[Erro ao acessar backend Greg/OpenAI]: ' + (err?.message || 'Erro desconhecido');
+    return (
+      '[Erro ao acessar backend Greg/OpenAI]: ' +
+      (err?.message || 'Erro desconhecido')
+    );
   }
 }

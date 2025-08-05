@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+// ...existing code...
 import styles from './NeuralInterfacePanel.module.css';
 
 export default function NeuralInterfacePanel() {

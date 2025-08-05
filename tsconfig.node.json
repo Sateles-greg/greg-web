@@ -4,7 +4,18 @@
     "skipLibCheck": true,
     "module": "ESNext",
     "moduleResolution": "bundler",
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true
   },
-  "include": ["vite.config.ts"]
+  "include": [
+    "vite.config.ts", 
+    "src/cli/**/*.ts", 
+    "src/cli/**/*.mts",
+    "src/core/**/*.ts",
+    "src/asi-agente/**/*.ts",
+    "src/agents/**/*.ts",
+    "src/autoModo.ts",
+    "src/ModoAgenteMain.ts"
+  ]
 }

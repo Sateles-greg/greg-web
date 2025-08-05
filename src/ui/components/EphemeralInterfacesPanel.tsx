@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+// ...existing code...
 import styles from './EphemeralInterfacesPanel.module.css';
 
 const EphemeralInterfacesPanel: React.FC = () => {

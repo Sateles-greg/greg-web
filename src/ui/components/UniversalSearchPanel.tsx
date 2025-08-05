@@ -1,12 +1,13 @@
-import React, { useState } from 'react';
+import { useState, FormEvent } from 'react';
+// ...existing code...
 import styles from './UniversalSearchPanel.module.css';
 
-const UniversalSearchPanel: React.FC = () => {
+const UniversalSearchPanel = () => {
   const [query, setQuery] = useState('');
   const [result, setResult] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
 
-  async function handleSearch(e: React.FormEvent) {
+  async function handleSearch(e: FormEvent) {
     e.preventDefault();
     setLoading(true);
     setResult(null);

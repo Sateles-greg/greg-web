@@ -1,5 +1,12 @@
 // Placeholder para detecção de emoção via texto
-export type Emotion = 'feliz' | 'triste' | 'neutro' | 'ansioso' | 'motivado' | 'cansado' | 'irritado';
+export type Emotion =
+  | 'feliz'
+  | 'triste'
+  | 'neutro'
+  | 'ansioso'
+  | 'motivado'
+  | 'cansado'
+  | 'irritado';
 
 export function detectEmotion(text: string): Emotion {
   const t = text.toLowerCase();

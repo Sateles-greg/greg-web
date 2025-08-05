@@ -1,6 +1,9 @@
-// import React from 'react';
+// import React from 'react'; // Removido: não utilizado
 import { useMemo } from 'react';
-import { Particles } from '@tsparticles/react';
+// import type { FC } from 'react'; // Removido: não utilizado
+import { Particles as ImportedParticles } from '@tsparticles/react';
+const Particles = ImportedParticles || (() => null);
+Particles.displayName = 'Particles';
 
 interface Props {
   modo: string;
@@ -59,6 +62,8 @@ export default function SimbioticParticles({ modo }: Props) {
   }, [modo]);
 
   return (
-    <Particles id='tsparticles' options={config} />
+    <>
+      {Particles ? <Particles id='tsparticles' options={config} /> : null}
+    </>
   );
 }

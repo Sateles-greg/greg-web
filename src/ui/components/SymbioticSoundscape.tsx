@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { useSymbiosis } from '../contexts/SymbiosisContext';
+import { useSymbiosis } from '../contexts';
 
 // Sons ambientes por modo (pode ser expandido para IA/MIDI futuramente)
 const modeSounds: Record<string, string> = {

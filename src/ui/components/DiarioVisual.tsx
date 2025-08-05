@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
+// ...existing code...
 import styles from './DiarioVisual.module.css';
-import { salvarEventoCloud, carregarEventosCloud } from '../services/firebaseService';
+import { salvarEventoCloud, carregarEventosCloud } from '../../services/firebaseService';
 
 // Função para tocar sons simples
 function playSound(type: 'add' | 'remove') {
@@ -20,7 +21,7 @@ function playSound(type: 'add' | 'remove') {
 async function sugerirEmocao(nota: string): Promise<string> {
   if (!nota.trim()) return 'neutro';
   try {
-    const apiKey = import.meta.env.VITE_OPENAI_API_KEY;
+    const apiKey = process.env.VITE_OPENAI_API_KEY;
     if (!apiKey) return 'neutro';
     const res = await fetch('https://api.openai.com/v1/chat/completions', {
       method: 'POST',

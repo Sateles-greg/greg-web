@@ -1,19 +1,19 @@
-import React, { useState } from 'react';
+// import React from 'react'; // Removido: não utilizado
 import { detectarModo } from './autoModo';
-import PainelDeModosSimbioticos from './PainelDeModosSimbioticos';
+// import PainelDeModosSimbioticos from './PainelDeModosSimbioticos'; // Removido: não utilizado
 import styles from './AutoModoEmotionHandler.module.css';
 
 export default function AutoModoEmotionHandler() {
-  const [modoAtual, setModoAtual] = useState<string>('zen');
+  // const [modoAtual, setModoAtual] = useState<string>('zen'); // Removido: não utilizado
 
   const interpretarInput = (input: string) => {
     const modoDetectado = detectarModo(input);
     if (modoDetectado) {
-      setModoAtual(modoDetectado);
+      // setModoAtual(modoDetectado); // Removido: variável não existe mais
     }
   };
 
-  const handleInputTexto = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleInputTexto = (e: any) => {
     e.preventDefault();
     const inputText = (e.currentTarget.elements.namedItem('mensagem') as HTMLInputElement).value;
     interpretarInput(inputText);
@@ -33,7 +33,8 @@ export default function AutoModoEmotionHandler() {
           Analisar
         </button>
       </form>
-      <PainelDeModosSimbioticos modoAtual={typeof modoAtual === 'number' ? modoAtual : 0} />
+      {/* <PainelDeModosSimbioticos modoAtual={typeof modoAtual === 'number' ? modoAtual : 0} /> */}
+      {/* O prop modoAtual numérico foi desabilitado temporariamente */}
     </div>
   );
 }

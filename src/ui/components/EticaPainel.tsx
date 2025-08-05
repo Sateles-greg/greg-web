@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
+// ...existing code...
 import styles from './EticaPainel.module.css';
-import { salvarPrincipioCloud, carregarPrincipiosCloud, removerPrincipioCloud } from '../services/firebaseService';
+import { salvarPrincipioCloud, carregarPrincipiosCloud, removerPrincipioCloud } from '../../services/firebaseService';
 
 
 
@@ -31,14 +32,13 @@ const EticaPainel: React.FC = () => {
       setPrincipios(p => [...p, novo]);
       setNovo('');
       playSound('add');
-      await salvarPrincipioCloud(novo);
+      await salvarPrincipioCloud([novo]);
     }
   }
   async function remover(idx: number) {
-    const principio = principios[idx];
     setPrincipios(p => p.filter((_, i) => i !== idx));
     playSound('remove');
-    await removerPrincipioCloud(principio);
+    await removerPrincipioCloud(idx);
   }
 
   return (

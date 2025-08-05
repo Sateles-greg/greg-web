@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+// ...existing code...
 import styles from './PrivacyPanel.module.css';
 
 const defaultSettings = {

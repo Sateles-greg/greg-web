@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
-import { SymbiosisContext } from '../contexts/SymbiosisContext';
+// ...existing code...
+import { SymbiosisContext } from '../contexts';
 import styles from './ExportacaoSimbiotica.module.css';
 
 const ExportacaoSimbiotica: React.FC = () => {

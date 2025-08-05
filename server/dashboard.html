@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Multi-Projeto Backend Monitor</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <h1>Monitoramento Multi-Projeto</h1>
+    <div id="charts"></div>
+    <div id="logs"></div>
+    <script>
+      async function fetchStats() {
+        const res = await fetch('/api/stats');
+        const stats = await res.json();
+        let html = '';
+        for (const p of stats) {
+          html += `<h2>${p.name}</h2><canvas id="chart_${p.name}" width="600" height="200"></canvas>`;
+        }
+        document.getElementById('charts').innerHTML = html;
+        for (const p of stats) {
+          const ctx = document.getElementById('chart_' + p.name).getContext('2d');
+          const data = {
+            labels: Object.keys(p.stats),
+            datasets: [{ label: 'Erros por hora', data: Object.values(p.stats), backgroundColor: 'rgba(54,162,235,0.2)', borderColor: 'rgba(54,162,235,1)', borderWidth: 1 }]
+          };
+          if (window['chart_' + p.name]) window['chart_' + p.name].destroy();
+          window['chart_' + p.name] = new Chart(ctx, { type: 'bar', data });
+        }
+      }
+      async function fetchLogs() {
+        const res = await fetch('/api/logs');
+        const logs = await res.json();
+        let html = '';
+        for (const p of logs) {
+          html += `<h2>${p.name}</h2><pre>${p.logs.join('\n')}</pre>`;
+        }
+        document.getElementById('logs').innerHTML = html;
+      }
+      setInterval(fetchStats, 5000);
+      setInterval(fetchLogs, 2000);
+      fetchStats();
+      fetchLogs();
+    </script>
+  </body>
+</html>

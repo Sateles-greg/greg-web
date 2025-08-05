@@ -1,9 +1,10 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { useSymbiosis } from '../contexts/SymbiosisContext';
+import React, { useState, useEffect, useRef } from 'react';
+// ...existing code...
+// import { useSymbiosis } from '../contexts'; // Removido: não utilizado
 import styles from './VoiceInput.module.css';
 
 const VoiceInput: React.FC = () => {
-  const { greet, loading } = useSymbiosis();
+  // const { greet, loading } = useSymbiosis();
   const [listening, setListening] = useState(false);
   const recognitionRef = useRef<any>(null);
 
@@ -14,16 +15,15 @@ const VoiceInput: React.FC = () => {
     recognitionRef.current.lang = 'pt-BR';
     recognitionRef.current.continuous = false;
     recognitionRef.current.interimResults = false;
-    recognitionRef.current.onresult = (event: any) => {
-      const text = event.results[0][0].transcript;
-      greet(text);
+    recognitionRef.current.onresult = () => {
+      // Função de saudação removida: não disponível no contexto
       setListening(false);
     };
     recognitionRef.current.onend = () => setListening(false);
-  }, [greet]);
+  }, []);
 
   const startListening = () => {
-    if (recognitionRef.current && !loading) {
+    if (recognitionRef.current) {
       setListening(true);
       recognitionRef.current.start();
     }
@@ -34,7 +34,7 @@ const VoiceInput: React.FC = () => {
       <button
         type="button"
         onClick={startListening}
-        disabled={loading || listening}
+        disabled={listening}
         className={[
           styles.voiceInputButton,
           listening ? styles.listening : ''

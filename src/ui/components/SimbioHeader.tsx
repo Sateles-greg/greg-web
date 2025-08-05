@@ -1,5 +1,5 @@
-import React from 'react';
-import { useSymbiosis } from '../contexts/SymbiosisContext';
+// ...existing code...
+import { useSymbiosis } from '../contexts';
 import styles from './SimbioHeader.module.css';
 
 const SimbioHeader: React.FC = () => {

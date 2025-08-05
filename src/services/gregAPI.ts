@@ -1,4 +1,4 @@
-import { SymbiosisMode } from '../contexts/SymbiosisContext';
+import { SymbiosisMode } from '@contexts/SymbiosisContext';
 
 export function getPeriod(): string {
   const hora = new Date().getHours();
@@ -15,7 +15,12 @@ const frases: Record<string, string> = {
   noite: 'Boa noite... hora de acalmar o sistema.',
 };
 
-export function getSymbioticResponse(name: string, period: string, mode: SymbiosisMode, personality?: string): string {
+export function getSymbioticResponse(
+  name: string,
+  period: string,
+  mode: SymbiosisMode,
+  personality?: string
+): string {
   const base = `Olá, ${name}. ${frases[period] || ''}`;
   let extra = '';
   switch (mode) {

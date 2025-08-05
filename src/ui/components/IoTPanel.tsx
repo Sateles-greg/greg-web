@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
+// ...existing code...
 import styles from './IoTPanel.module.css';
-import { salvarDispositivoCloud, carregarDispositivosCloud } from '../services/firebaseService';
+import { salvarDispositivoCloud, carregarDispositivosCloud } from '../../services/firebaseService';
 import { t } from '../i18n';
 // Troque 'pt' por 'en' para testar em inglês
 const lang = 'pt';

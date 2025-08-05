@@ -13,14 +13,13 @@ export async function analisarTexto(texto: string) {
   return nlpModel(texto);
 }
 
-
 export async function respostaSimbio(texto: string, contexto: string) {
   const prompt = `Contexto: ${contexto}\nUsuário: ${texto}\nGreg: Responda de forma simbiótica, empática e personalizada.`;
   try {
     const response = await fetch('http://localhost:3001/api/greg', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ prompt, modo: 'NLP' })
+      body: JSON.stringify({ prompt, modo: 'NLP' }),
     });
     const data = await response.json();
     return data.result || '[sem resposta]';

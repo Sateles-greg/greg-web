@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import styles from './GregDiagnosticsPanel.module.css';
-
 const checks = [
   {
     name: 'Verificar elemento root',
@@ -31,7 +30,7 @@ const checks = [
     fn: () => {
       try {
         // Testa se consegue importar um plugin padrão
-        return import.meta.env ? true : false;
+        return process.env ? true : false;
       } catch {
         return false;
       }
@@ -43,27 +42,39 @@ const checks = [
 
 export default function GregDiagnosticsPanel() {
   const [results, setResults] = useState<(boolean | null)[]>(Array(checks.length).fill(null));
-
+  const [loading, setLoading] = useState(false);
   const runDiagnostics = () => {
-    setResults(checks.map(c => {
-      try {
-        return c.fn();
-      } catch {
-        return false;
-      }
-    }));
+    setLoading(true);
+    setTimeout(() => {
+      setResults(checks.map(c => {
+        try {
+          return c.fn();
+        } catch {
+          return false;
+        }
+      }));
+      setLoading(false);
+    }, 400); // Simula um pequeno delay para UX
   };
 
   return (
     <div className={styles['diagnostics-root']}>
       <h2>Diagnóstico Simbiótico Greg</h2>
-      <button onClick={runDiagnostics} className={styles['diagnostics-btn']}>Executar Diagnóstico</button>
+      <button
+        onClick={runDiagnostics}
+        className={styles['diagnostics-btn']}
+        aria-busy={loading}
+        tabIndex={0}
+        disabled={loading}
+      >
+        {loading ? 'Executando...' : 'Executar Diagnóstico'}
+      </button>
       <ul>
         {checks.map((c, i) => (
           <li key={c.name} className={styles['diagnostics-list-item']}>
             {c.name}: {results[i] === null ? 'Aguardando...' : results[i] ? 'OK' : 'Falha'}
             {!results[i] && results[i] !== null && (
-              <button onClick={c.fix} className={styles['diagnostics-fix-btn']}>{c.fixLabel}</button>
+              <button onClick={c.fix} className={styles['diagnostics-fix-btn']} tabIndex={0}>{c.fixLabel}</button>
             )}
           </li>
         ))}

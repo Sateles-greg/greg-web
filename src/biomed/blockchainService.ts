@@ -15,8 +15,18 @@ export const blockchainService = {
   async getAuditTrail() {
     // Retorna trilha de auditoria mock
     return [
-      { evento: 'Acesso FHIR', por: 'Greg', hash: '0xabc123', timestamp: new Date().toISOString() },
-      { evento: 'Consentimento alterado', por: 'Usuário', hash: '0xdef456', timestamp: new Date().toISOString() }
+      {
+        evento: 'Acesso FHIR',
+        por: 'Greg',
+        hash: '0xabc123',
+        timestamp: new Date().toISOString(),
+      },
+      {
+        evento: 'Consentimento alterado',
+        por: 'Usuário',
+        hash: '0xdef456',
+        timestamp: new Date().toISOString(),
+      },
     ];
-  }
+  },
 };

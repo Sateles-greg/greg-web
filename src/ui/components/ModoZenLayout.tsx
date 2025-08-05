@@ -1,4 +1,4 @@
-import React from 'react';
+// ...existing code...
 import { FaMicrophone, FaRegCircle, FaMusic } from 'react-icons/fa';
 import { MdSelfImprovement } from 'react-icons/md';
 import { IoMdCloudyNight } from 'react-icons/io';

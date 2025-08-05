@@ -1,10 +1,10 @@
-import React from 'react';
+// ...existing code...
 import { FaMicrophone } from 'react-icons/fa';
 import { GiHealthNormal, GiSpiralArrow, GiBrain } from 'react-icons/gi';
 import { BsGraphUpArrow } from 'react-icons/bs';
 import styles from './ModoFocoLayout.module.css';
 import ModoBaseLayout from './ModoBaseLayout';
-import { useSymbiosis } from '../contexts/SymbiosisContext';
+import { useSymbiosis } from '../contexts';
 
 const ModoFocoLayout: React.FC = () => {
   useSymbiosis();

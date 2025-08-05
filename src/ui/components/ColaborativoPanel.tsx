@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
-import colaborativoPlugin from '../plugins/colaborativo';
-import signalingService from '../services/signalingService';
+// ...existing code...
+import colaborativoPlugin from '../../integrations/plugins/colaborativo';
+import signalingService from '../../services/signalingService';
 import styles from './ColaborativoPanel.module.css';
 
 const mockUsers = ['Greg-Alpha', 'Greg-Beta', 'Greg-Gamma'];
@@ -20,9 +21,9 @@ const ColaborativoPanel: React.FC = () => {
       onMessage: (msg: string) => setChat(c => [...c, `Remoto: ${msg}`]),
       sendMessage: (msg: string) => setChat(c => [...c, `Greg: ${msg}`]),
     });
-    signalingService.onMessage = (msg: any) => {
+    signalingService.onMessage = (msg: { type: string; from?: string; offer?: any; answer?: any; candidate?: any }) => {
       if (msg.type === 'offer') {
-        setConvites(c => [...c, msg.from]);
+        if (typeof msg.from === 'string') setConvites(c => [...c, msg.from as string]);
         pluginRef.current.receberOferta(msg.offer, msg.from);
       } else if (msg.type === 'answer') {
         pluginRef.current.receberResposta(msg.answer);

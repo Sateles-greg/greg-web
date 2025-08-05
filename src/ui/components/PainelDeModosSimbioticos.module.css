@@ -1,3 +1,36 @@
+.botaoModo {
+  background: #f1f3f5;
+  color: #222;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 18px;
+  margin: 4px 0;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  outline: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.botaoModo:hover {
+  background: #a5d8ff;
+  color: #222;
+  box-shadow: 0 2px 8px rgba(51,154,240,0.10);
+}
+.botaoModo:focus {
+  box-shadow: 0 0 0 3px #74c0fc;
+}
+.ativo {
+  background: #339af0;
+  color: #fff;
+}
+.simbolo {
+  font-size: 1.3em;
+}
+.nome {
+  font-size: 1em;
+}
 .painel-modos-root {
   position: relative;
   width: 100%;

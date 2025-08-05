@@ -1,0 +1,15 @@
+.usageBar {
+  width: 100%;
+  background-color: #4a5568; /* Cor de fundo equivalente a 'bg-gray-600' do Tailwind */
+  border-radius: 9999px;
+  height: 0.625rem; /* Equivalente a 'h-2.5' */
+}
+
+.usageBarFill {
+  height: 100%;
+  border-radius: 9999px;
+  /* A largura será controlada pela variável --usage-percentage */
+  width: var(--usage-percentage, 0%); 
+  /* A cor de fundo será controlada pelas classes do Tailwind no componente */
+  transition: width 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}

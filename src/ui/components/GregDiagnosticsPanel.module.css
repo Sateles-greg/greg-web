@@ -1,3 +1,26 @@
+.diagnostics-btn, .diagnostics-fix-btn {
+  background: #a5d8ff;
+  color: #222;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s;
+  outline: none;
+}
+.diagnostics-btn:hover, .diagnostics-fix-btn:hover {
+  background: #339af0;
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(51,154,240,0.12);
+}
+.diagnostics-btn:focus, .diagnostics-fix-btn:focus {
+  box-shadow: 0 0 0 3px #74c0fc;
+}
+.diagnostics-btn[aria-busy="true"] {
+  opacity: 0.7;
+  pointer-events: none;
+}
 .diagnostics-root {
   background: #222;
   color: #fff;

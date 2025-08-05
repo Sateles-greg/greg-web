@@ -1,0 +1,10 @@
+{
+  "connector": "local",
+  "formatters": [
+    "stylish"
+  ],
+  "hints": {
+    "no-inline-styles": "warning"
+  },
+  "hintsTimeout": 30000
+}

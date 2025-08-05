@@ -6,6 +6,6 @@ export function analisarEstado() {
     integridade: 'ok',
     memoria: 'normal',
     riscos: [],
-    status: 'Simbiótico saudável'
+    status: 'Simbiótico saudável',
   };
 }

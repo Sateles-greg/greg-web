@@ -7,5 +7,5 @@ export type Lang = 'pt' | 'en';
 
 export function t(key: string, lang: Lang = 'pt') {
   const dict = resources[lang] || resources['pt'];
-  return (dict && dict[key]) || key;
+  return (dict && (dict as Record<string, string>)[key]) || key;
 }

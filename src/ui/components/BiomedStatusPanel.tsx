@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import { biomedDataService } from '../biomed/biomedDataService';
+import React, { useState, useEffect } from 'react';
+// ...existing code...
+import { biomedDataService } from '../../biomed/biomedDataService';
 import styles from './BiomedStatusPanel.module.css';
 
 interface BiomedStatus {
@@ -30,9 +31,9 @@ const BiomedStatusPanel: React.FC<{ userId?: string }> = ({ userId = 'demo' }) =
   const [biosensor, setBiosensor] = useState<BiosensorData | null>(null);
 
   useEffect(() => {
-    biomedDataService.getUnifiedMedicalHistory(userId).then(setHistory);
+    biomedDataService.getUnifiedMedicalHistory().then(setHistory);
     const interval = setInterval(() => {
-      biomedDataService.getRealtimeBiosensorData(userId).then(setBiosensor);
+      biomedDataService.getRealtimeBiosensorData().then(setBiosensor);
     }, 3000);
     return () => clearInterval(interval);
   }, [userId]);

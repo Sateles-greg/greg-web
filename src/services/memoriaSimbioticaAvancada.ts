@@ -1,7 +1,9 @@
 export function rotinaNoturnaReorganizacao() {
   // Simula limpeza e organização de memórias simbióticas
   const registros = recuperarSimbioticos();
-  const otimizados = registros.filter(r => r.tipo !== 'aprendizado' || r.conteudo.length > 10);
+  const otimizados = registros.filter(
+    (r) => r.tipo !== 'aprendizado' || r.conteudo.length > 10
+  );
   localStorage.setItem('greg_memoria_simbiotica', JSON.stringify(otimizados));
   return otimizados.length;
 }
@@ -24,7 +26,7 @@ export function recuperarSimbioticos(): RegistroSimbiotico[] {
   return dados ? JSON.parse(dados) : [];
 }
 import axios from 'axios';
-import type { SymbiosisMode } from '../contexts/SymbiosisContext';
+import { SymbiosisMode } from '@contexts/SymbiosisContext';
 
 function getApiUrl() {
   if (typeof process.env !== 'undefined' && process.env.VITE_API_URL) {
@@ -55,9 +57,14 @@ export async function registrarModo(modo: SymbiosisMode) {
   try {
     // Verifica se o backend responde antes de tentar sincronizar
     await axios.get(`${getApiUrl()}/api/ping`, { timeout: 2000 });
-    await axios.post(`${getApiUrl()}/api/sincronizarModo`, { modo, data: agora });
+    await axios.post(`${getApiUrl()}/api/sincronizarModo`, {
+      modo,
+      data: agora,
+    });
   } catch (e) {
-    console.warn('Backend não disponível, sincronização será ignorada. Modo salvo apenas localmente.');
+    console.warn(
+      'Backend não disponível, sincronização será ignorada. Modo salvo apenas localmente.'
+    );
   }
 }
 
@@ -66,12 +73,16 @@ export function recuperarRegistros(): RegistroModo[] {
   return dados ? JSON.parse(dados) : [];
 }
 
-export function contarModosMaisUsados(periodoDias?: number): Record<SymbiosisMode, number> {
+export function contarModosMaisUsados(
+  periodoDias?: number
+): Record<SymbiosisMode, number> {
   const agora = new Date();
-  const limite = periodoDias ? new Date(agora.getTime() - periodoDias * 86400000) : null;
+  const limite = periodoDias
+    ? new Date(agora.getTime() - periodoDias * 86400000)
+    : null;
 
-  const registros = recuperarRegistros().filter(r =>
-    !limite || new Date(r.data) >= limite
+  const registros = recuperarRegistros().filter(
+    (r) => !limite || new Date(r.data) >= limite
   );
 
   const contagem: Record<SymbiosisMode, number> = {} as any;
@@ -94,16 +105,29 @@ export function gerarDadosParaGrafico(periodoDias = 7) {
   const dados = contarModosMaisUsados(periodoDias);
   return {
     labels: Object.keys(dados),
-    datasets: [{
-      label: 'Usos por modo',
-      data: Object.values(dados),
-      backgroundColor: ['#1e40af', '#047857', '#7c3aed', '#111827', '#f59e0b', '#f87171', '#a3e635', '#a78bfa', '#facc15', '#818cf8']
-    }]
+    datasets: [
+      {
+        label: 'Usos por modo',
+        data: Object.values(dados),
+        backgroundColor: [
+          '#1e40af',
+          '#047857',
+          '#7c3aed',
+          '#111827',
+          '#f59e0b',
+          '#f87171',
+          '#a3e635',
+          '#a78bfa',
+          '#facc15',
+          '#818cf8',
+        ],
+      },
+    ],
   };
 }
 
 export function exportarRelatorioSimbiotico(): string {
   const registros = recuperarRegistros();
-  const linhas = registros.map(r => `${r.data} - ${r.modo}`);
+  const linhas = registros.map((r) => `${r.data} - ${r.modo}`);
   return ['Histórico de Modos Ativados:', ...linhas].join('\n');
 }

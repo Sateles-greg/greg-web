@@ -1,0 +1,12 @@
+.dashboard {
+  background: linear-gradient(135deg, #18181b, #312e81);
+  min-height: 100vh;
+  color: #fff;
+  font-family: 'Segoe UI', sans-serif;
+  padding: 2rem;
+}
+.title {
+  font-weight: 400;
+  font-size: 2.5rem;
+  margin: 2rem 0;
+}

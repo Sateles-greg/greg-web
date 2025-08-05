@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Painel de Monitoramento</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    .alert {
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
+    }
+    .alert.info {
+      background-color: #d9edf7;
+      color: #31708f;
+    }
+    .alert.warning {
+      background-color: #fcf8e3;
+      color: #8a6d3b;
+    }
+  </style>
+</head>
+<body>
+  <h1>Painel de Monitoramento</h1>
+  <div>
+    <strong>Modo Atual:</strong> <span id="modoAtual">Carregando...</span>
+  </div>
+  <div>
+    <strong>Tarefas em Execução:</strong> <span id="tarefasEmExecucao">Carregando...</span>
+  </div>
+  <div>
+    <strong>Alertas:</strong>
+    <div id="alertas">Carregando...</div>
+  </div>
+  <script>
+    async function atualizarPainel() {
+      try {
+        const response = await fetch('/api/status');
+        const data = await response.json();
+
+        document.getElementById('modoAtual').textContent = data.modoAtual;
+        document.getElementById('tarefasEmExecucao').textContent = data.tarefasEmExecucao;
+
+        const alertasDiv = document.getElementById('alertas');
+        alertasDiv.innerHTML = '';
+        data.alertas.forEach(alerta => {
+          const alertaDiv = document.createElement('div');
+          alertaDiv.className = `alert ${alerta.tipo}`;
+          alertaDiv.textContent = alerta.mensagem;
+          alertasDiv.appendChild(alertaDiv);
+        });
+      } catch (error) {
+        console.error('Erro ao atualizar painel:', error);
+      }
+    }
+
+    setInterval(atualizarPainel, 5000); // Atualizar a cada 5 segundos
+    atualizarPainel();
+  </script>
+</body>
+</html>

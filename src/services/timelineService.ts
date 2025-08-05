@@ -4,6 +4,6 @@ export function simularLinhaDoTempo(decisao: string) {
   return [
     { decisao, impacto: 'Positivo', futuro: 'Maior produtividade' },
     { decisao, impacto: 'Neutro', futuro: 'Pouca mudança' },
-    { decisao, impacto: 'Negativo', futuro: 'Estresse aumentado' }
+    { decisao, impacto: 'Negativo', futuro: 'Estresse aumentado' },
   ];
 }

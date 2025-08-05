@@ -1,4 +1,4 @@
-import React from 'react';
+// ...existing code...
 import './SymbioticAvatar.css';
 
 interface SymbioticAvatarProps {

@@ -20,7 +20,7 @@ export async function gerarRelatorioAutomatico() {
     perfil,
     memorias,
     iot,
-    status: 'OK'
+    status: 'OK',
   };
   localStorage.setItem('greg_relatorio_auto', JSON.stringify(relatorio));
   return relatorio;

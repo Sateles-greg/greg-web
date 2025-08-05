@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useSymbiosis } from '../contexts/SymbiosisContext';
+import { useSymbiosis } from '../contexts';
 
 export default function AutoSugestaoModoAoIniciar() {
   const { sugerirModoPorHistorico, setMode, mode } = useSymbiosis();

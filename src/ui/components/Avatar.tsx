@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React from 'react'; // Nenhum hook necessário neste componente
 import './Avatar.css';
 
 type SymbiosisMode = 'expansao' | 'foco' | 'guardiao' | 'reparo' | 'sombra';

@@ -1,14 +1,14 @@
 
-import React, { useEffect, useState, useRef } from 'react';
+// ...existing code...
 import styles from './BiomedPanel.module.css';
-import { biomedDataService } from '../biomed/biomedDataService';
-import { diagnosticService } from '../biomed/diagnosticService';
-import { treatmentService } from '../biomed/treatmentService';
-import { ethicsService } from '../biomed/ethicsService';
-import { biomedKnowledgeService } from '../biomed/biomedKnowledgeService';
-import { fhirService } from '../biomed/fhirService';
-import { blockchainService } from '../biomed/blockchainService';
-import { quantumSafeService } from '../biomed/quantumSafeService';
+import { biomedDataService } from '../../biomed/biomedDataService';
+import { diagnosticService } from '../../biomed/diagnosticService';
+import { treatmentService } from '../../biomed/treatmentService';
+import { ethicsService } from '../../biomed/ethicsService';
+import { biomedKnowledgeService } from '../../biomed/biomedKnowledgeService';
+import { fhirService } from '../../biomed/fhirService';
+import { blockchainService } from '../../biomed/blockchainService';
+import { quantumSafeService } from '../../biomed/quantumSafeService';
 
 // userId removido: não utilizado
 
@@ -253,3 +253,4 @@ const BiomedPanel: React.FC = () => {
 };
 
 export default BiomedPanel;
+import React, { useState, useEffect, useRef } from 'react';

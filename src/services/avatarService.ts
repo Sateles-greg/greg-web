@@ -1,12 +1,24 @@
 // Customização de avatar e animações (mock)
-export type SymbiosisMode = 'expansao' | 'foco' | 'guardiao' | 'reparo' | 'sombra';
+import { SymbiosisMode } from '@contexts/SymbiosisContext';
+// export type SymbiosisMode =
+//   | 'expansao'
+//   | 'foco'
+//   | 'guardiao'
+//   | 'reparo'
+//   | 'sombra';
 export function obterAvatarPersonalizado(modo: SymbiosisMode | string) {
   const avatares: Record<SymbiosisMode, string> = {
-    expansao: '🦁',
+    zen: '🧘',
+    estrategia: '♟️',
+    criativo: '🎨',
+    emocional: '💖',
+    noturno: '🌙',
     foco: '🦉',
-    guardiao: '🐺',
+    expansao: '🦁',
     reparo: '🦾',
-    sombra: '🦇'
+    sombra: '🦇',
+    guardiao: '🐺',
+    offline: '🤖',
   };
   return avatares[modo as SymbiosisMode] || '🤖';
 }

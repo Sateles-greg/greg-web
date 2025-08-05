@@ -1,5 +1,7 @@
 // Dispositivos IoT
-export async function salvarDispositivoCloud(status: {[id:string]: boolean}) {
+export async function salvarDispositivoCloud(status: {
+  [id: string]: boolean;
+}) {
   await set(ref(db, 'iotStatus'), status);
 }
 
@@ -26,7 +28,7 @@ const firebaseConfig = {
   projectId: 'SEU_PROJECT_ID',
   storageBucket: 'SEU_BUCKET.appspot.com',
   messagingSenderId: 'SEU_SENDER_ID',
-  appId: 'SEU_APP_ID'
+  appId: 'SEU_APP_ID',
 };
 
 const app = initializeApp(firebaseConfig);
