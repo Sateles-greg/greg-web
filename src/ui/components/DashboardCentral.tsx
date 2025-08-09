@@ -10,6 +10,8 @@ import { sugerirInovacaoSimbio } from '../../services/inovacaoSimbioService';
 
 
 import Avatar from './Avatar';
+import ChatPanel from './ChatPanel';
+import { useToast } from './ToastProvider';
 import { sincronizarCalendario } from '../../services/calendarService';
 import { coletarDadosBiometricos } from '../../services/biometriaService';
 import { sugerirRotina } from '../../services/routineService';
@@ -37,11 +39,13 @@ import { obterRotaInteligente } from '../../services/logisticaInteligenteService
 import { gerarAlertaDiagnostico } from '../../services/diagnosticoMedicoInteligenteService';
 import { criptografarDados } from '../../services/segurancaSimbioService';
 
-  // const [diagnostico, setDiagnostico] = useState<string>(''); // Removido: não utilizado
+
 type EventoCalendario = { evento: string; data: string };
 type RotinaSugerida = { rotina: string; motivo: string };
+// const [diagnostico, setDiagnostico] = useState<string>(''); // Removido: não utilizado
 
 export default function DashboardCentral() {
+  const { showToast } = useToast();
   const [eventos, setEventos] = useState<EventoCalendario[]>([]);
   const [biometria, setBiometria] = useState<any>({});
   const [rotinas, setRotinas] = useState<RotinaSugerida[]>([]);
@@ -97,6 +101,9 @@ export default function DashboardCentral() {
     <div className={styles.dashboardRoot}>
       <Avatar />
       <div className={styles.cardsContainer}>
+        <div className={styles.dashboardOverlayCard}>
+          <ChatPanel />
+        </div>
         <div className={styles.dashboardOverlayCard}><h4>Eventos do Calendário</h4><ul>{eventos.length ? eventos.map((e, i) => <li key={i}>{e.evento} - {e.data}</li>) : <li>Nenhum evento encontrado</li>}</ul></div>
         <div className={styles.dashboardOverlayCard}><h4>Biometria</h4><pre>{biometria && Object.keys(biometria).length ? JSON.stringify(biometria, null, 2) : 'Sem dados biométricos'}</pre></div>
         <div className={styles.dashboardOverlayCard}><h4>Rotinas Sugeridas</h4><ul>{rotinas.length ? rotinas.map((r, i) => <li key={i}>{r.rotina} - {r.motivo}</li>) : <li>Nenhuma rotina sugerida</li>}</ul></div>
@@ -120,6 +127,8 @@ export default function DashboardCentral() {
         <div className={styles.dashboardOverlayCard}><h4>Logística Inteligente</h4><pre>{rota ? JSON.stringify(rota, null, 2) : 'Sem rota'}</pre></div>
         <div className={styles.dashboardOverlayCard}><h4>Diagnóstico Médico Inteligente</h4><div>{diagnostico || 'N/A'}</div></div>
         <div className={styles.dashboardOverlayCard}><h4>Privacidade & Segurança</h4><div>Dados criptografados: {dadosSeguros || 'N/A'}</div></div>
+        {/* Removido painel colaborativo antigo para evitar redundância */}
+        {/* <div className={styles.dashboardOverlayCard}><ColaborativoPanel /></div> */}
         <div className={styles.dashboardOverlayCard}><h4>Automação & Inovação Simbiótica</h4><div>Em desenvolvimento...</div></div>
         <div className={styles.dashboardOverlayCard}><h4>Avaliação & Autoajuste</h4><pre>{metricas ? JSON.stringify(metricas, null, 2) : 'Sem métricas'}</pre><div>{ajuste || 'N/A'}</div></div>
         <div className={styles.dashboardOverlayCard}><h4>Inovação Simbiótica</h4><div>{inovacao || 'N/A'}</div></div>
@@ -133,23 +142,26 @@ export default function DashboardCentral() {
           <button onClick={() => {
             try {
               exportarRelatorioJSON();
+              showToast('Relatório exportado com sucesso!', 'success');
             } catch {
-              alert('Erro ao exportar relatório');
+              showToast('Erro ao exportar relatório', 'error');
             }
           }}>Exportar JSON</button>
           <button onClick={() => {
             try {
               auditarRelatorio();
+              showToast('Relatório auditado com sucesso!', 'success');
             } catch {
-              alert('Erro ao auditar relatório');
+              showToast('Erro ao auditar relatório', 'error');
             }
           }}>Auditar Relatório</button>
           <button onClick={() => {
             (async () => {
               try {
                 await enviarNotificacaoSimbiotica('Relatório Greg', JSON.stringify(relatorioAuto));
+                showToast('Notificação enviada!', 'success');
               } catch {
-                alert('Erro ao enviar notificação');
+                showToast('Erro ao enviar notificação', 'error');
               }
             })();
           }}>Notificar</button>

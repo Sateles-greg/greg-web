@@ -1,12 +1,12 @@
+
 import { SymbiosisProvider } from './contexts/SymbiosisProvider';
 import { useSymbiosis } from './contexts/useSymbiosis';
 import SymbioticBackground from './components/SymbioticBackground';
 import styles from './App.module.css';
-
-
 import PainelDeModosSimbioticos from './components/PainelDeModosSimbioticos';
 import GregDiagnosticsPanel from './components/GregDiagnosticsPanel';
 import DashboardCentral from './components/DashboardCentral';
+import { ToastProvider } from './components/ToastProvider';
 
 const Main = () => {
   const { mode, status } = useSymbiosis();
@@ -36,10 +36,13 @@ const Main = () => {
   );
 };
 
+
 const App = () => (
-  <SymbiosisProvider>
-    <Main />
-  </SymbiosisProvider>
+  <ToastProvider>
+    <SymbiosisProvider>
+      <Main />
+    </SymbiosisProvider>
+  </ToastProvider>
 );
 
 export default App;

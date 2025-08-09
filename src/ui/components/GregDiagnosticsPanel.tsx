@@ -1,46 +1,52 @@
 import { useState } from 'react';
+import { useToast } from './ToastProvider';
 import styles from './GregDiagnosticsPanel.module.css';
-const checks = [
-  {
-    name: 'Verificar elemento root',
-    fn: () => !!document.getElementById('root'),
-    fix: () => window.location.reload(),
-    fixLabel: 'Recarregar página'
-  },
-  {
-    name: 'Verificar renderização do React',
-    fn: () => {
-      const root = document.getElementById('root');
-      return root && root.childElementCount > 0;
+
+function getChecks(showToast: (msg: string, type?: 'info' | 'error' | 'success') => void) {
+  return [
+    {
+      name: 'Verificar elemento root',
+      fn: () => !!document.getElementById('root'),
+      fix: () => window.location.reload(),
+      fixLabel: 'Recarregar página'
     },
-    fix: () => window.location.reload(),
-    fixLabel: 'Recarregar página'
-  },
-  {
-    name: 'Verificar erros no console',
-    fn: () => {
-      // Não há acesso direto ao console, mas pode-se sugerir abrir o console
-      return true;
+    {
+      name: 'Verificar renderização do React',
+      fn: () => {
+        const root = document.getElementById('root');
+        return root && root.childElementCount > 0;
+      },
+      fix: () => window.location.reload(),
+      fixLabel: 'Recarregar página'
     },
-    fix: () => alert('Abra o console do navegador (F12) para ver detalhes dos erros.'),
-    fixLabel: 'Abrir instrução'
-  },
-  {
-    name: 'Verificar import dinâmico de plugins',
-    fn: () => {
-      try {
-        // Testa se consegue importar um plugin padrão
-        return process.env ? true : false;
-      } catch {
-        return false;
-      }
+    {
+      name: 'Verificar erros no console',
+      fn: () => {
+        // Não há acesso direto ao console, mas pode-se sugerir abrir o console
+        return true;
+      },
+      fix: () => showToast('Abra o console do navegador (F12) para ver detalhes dos erros.', 'info'),
+      fixLabel: 'Abrir instrução'
     },
-    fix: () => alert('Verifique se o nome do plugin e extensão .ts estão corretos.'),
-    fixLabel: 'Instrução de correção'
-  }
-];
+    {
+      name: 'Verificar import dinâmico de plugins',
+      fn: () => {
+        try {
+          // Testa se consegue importar um plugin padrão
+          return process.env ? true : false;
+        } catch {
+          return false;
+        }
+      },
+      fix: () => showToast('Verifique se o nome do plugin e extensão .ts estão corretos.', 'info'),
+      fixLabel: 'Instrução de correção'
+    }
+  ];
+}
 
 export default function GregDiagnosticsPanel() {
+  const { showToast } = useToast();
+  const checks = getChecks(showToast);
   const [results, setResults] = useState<(boolean | null)[]>(Array(checks.length).fill(null));
   const [loading, setLoading] = useState(false);
   const runDiagnostics = () => {

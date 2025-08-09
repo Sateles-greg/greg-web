@@ -1,3 +1,4 @@
+// ColaborativoPanel.tsx has been removed as it is no longer needed.
 import React, { useState, useEffect, useRef } from 'react';
 // ...existing code...
 import colaborativoPlugin from '../../integrations/plugins/colaborativo';

@@ -1,0 +1,134 @@
+.chatSection {
+  max-width: 480px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px #0001;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.chatTitle {
+  text-align: center;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #2a2a2a;
+}
+.modeSwitch {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+}
+.modeSwitch button {
+  padding: 0.3rem 1.2rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background: #f7f7f7;
+  cursor: pointer;
+  font-weight: 500;
+}
+.modeSwitch .active {
+  background: #2a7fff;
+  color: #fff;
+  border-color: #2a7fff;
+}
+.colabSelect {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+}
+.chatHistory {
+  min-height: 120px;
+  max-height: 220px;
+  overflow-y: auto;
+  background: #f9fafd;
+  border-radius: 8px;
+  padding: 0.7rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.user {
+  align-self: flex-end;
+  background: #e3f0ff;
+  color: #1a3a6b;
+  border-radius: 8px 8px 2px 8px;
+  padding: 0.3rem 0.7rem;
+  max-width: 80%;
+  font-size: 1rem;
+}
+.ia {
+  align-self: flex-start;
+  background: #f1f7e9;
+  color: #3a5a1a;
+  border-radius: 8px 8px 8px 2px;
+  padding: 0.3rem 0.7rem;
+  max-width: 80%;
+  font-size: 1rem;
+}
+.colab {
+  align-self: flex-start;
+  background: #f7e9f1;
+  color: #6b1a3a;
+  border-radius: 8px 8px 8px 2px;
+  padding: 0.3rem 0.7rem;
+  max-width: 80%;
+  font-size: 1rem;
+}
+.time {
+  font-size: 0.8em;
+  color: #888;
+  margin-right: 0.5em;
+}
+.text {
+  font-size: 1em;
+}
+.origem {
+  font-size: 0.7em;
+  color: #aaa;
+  margin-left: 0.5em;
+}
+.empty {
+  color: #aaa;
+  text-align: center;
+  font-size: 1em;
+  margin: 1.5em 0;
+}
+.chatForm {
+  display: flex;
+  gap: 0.5rem;
+}
+.chatForm input {
+  flex: 1;
+  padding: 0.5rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+.chatForm button {
+  padding: 0.5rem 1.2rem;
+  border-radius: 6px;
+  border: none;
+  background: #2a7fff;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}
+.error {
+  color: #c00;
+  background: #ffeaea;
+  border-radius: 6px;
+  padding: 0.4em 0.8em;
+  margin-top: 0.5em;
+  text-align: center;
+}
+.exemplos {
+  margin-top: 1em;
+  font-size: 0.95em;
+}
+.exemplos summary {
+  cursor: pointer;
+  font-weight: 600;
+}
