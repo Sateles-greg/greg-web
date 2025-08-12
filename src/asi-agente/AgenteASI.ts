@@ -1,4 +1,5 @@
 import { detectarModo } from '../autoModo';
+import { logger } from '../utils/secureLogger';
 // import { analisarSentimento } from '../agents/greg-ai/GregAI'; // Removido: não utilizado
 
 interface ConfiguracaoAgente {
@@ -204,15 +205,23 @@ export class AgenteASI {
     return contextos[Math.floor(Math.random() * contextos.length)];
   }
 
-  // Sistema de log
+  // Sistema de log seguro
   private log(
     mensagem: string,
+    dados?: any,
     nivel: 'info' | 'warn' | 'error' = 'info'
   ): void {
     if (this.configuracao.logAtivo) {
-      const timestamp = new Date().toISOString();
-      const prefixo = `[${timestamp}] [AgenteASI] [${nivel.toUpperCase()}]`;
-      console.log(`${prefixo} ${mensagem}`);
+      switch (nivel) {
+        case 'error':
+          logger.error(`[AgenteASI] ${mensagem}`, dados);
+          break;
+        case 'warn':
+          logger.warn(`[AgenteASI] ${mensagem}`, dados);
+          break;
+        default:
+          logger.debug(`[AgenteASI] ${mensagem}`, dados);
+      }
     }
   }
 

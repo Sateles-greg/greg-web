@@ -1,6 +1,6 @@
 import { AgenteASI } from '../asi-agente/AgenteASI';
 import { orquestrarGreg } from '../agents/greg-orchestrator';
-import { analisarSentimento, simularDecisao } from '../agents/greg-ai/GregAI';
+import { analisarSentimento, simularDecisao } from '../services/secureGregAI';
 import { detectarModo } from '../autoModo';
 
 interface ConfiguracaoModoAgente {
