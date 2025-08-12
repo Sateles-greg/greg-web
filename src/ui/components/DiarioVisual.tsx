@@ -17,26 +17,25 @@ function playSound(type: 'add' | 'remove') {
   setTimeout(() => ctx.close(), 300);
 }
 
-// Sugere emoção via OpenAI API (usando variável de ambiente)
+// Sugere emoção via backend endpoint seguro (removendo acesso direto à API)
 async function sugerirEmocao(nota: string): Promise<string> {
   if (!nota.trim()) return 'neutro';
   try {
-    const apiKey = process.env.VITE_OPENAI_API_KEY;
-    if (!apiKey) return 'neutro';
-    const res = await fetch('https://api.openai.com/v1/chat/completions', {
+    const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3001';
+    const response = await fetch(`${apiUrl}/api/greg/analyze-emotion`, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${apiKey}`
+        'Content-Type': 'application/json'
       },
-      body: JSON.stringify({
-        model: 'gpt-3.5-turbo',
-        messages: [{role:'system', content:'Classifique a emoção principal do texto em uma palavra (feliz, cansado, ansioso, motivado, neutro, irritado). Responda só a palavra.'}, {role:'user', content: nota}]
-      })
+      body: JSON.stringify({ text: nota })
     });
-    const data = await res.json();
-    const resposta = data.choices?.[0]?.message?.content?.toLowerCase() || 'neutro';
-    return EMOCOES.includes(resposta) ? resposta : 'neutro';
+    
+    if (!response.ok) {
+      return 'neutro';
+    }
+    
+    const data = await response.json();
+    return data.emotion || 'neutro';
   } catch {
     return 'neutro';
   }

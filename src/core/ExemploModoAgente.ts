@@ -1,4 +1,6 @@
 import { ControladorModoAgente, modoAgente } from '../core/ModoAgente';
+// NOTE: This is a demo/example file. In production, replace console.log with secure logging
+// import { logger } from '../utils/secureLogger';
 
 // Exemplo de uso básico do Modo Agente
 async function exemploUsoBasico() {

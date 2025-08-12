@@ -6,7 +6,7 @@ const mockedAxios = axios as jest.Mocked<typeof axios>;
 
 beforeAll(() => {
   process.env.JEST_GOOGLE_API_KEY = 'mocked-google-api-key';
-  console.log('Chave mock configurada:', process.env.JEST_GOOGLE_API_KEY);
+  // Remove sensitive logging - just set the environment variable
 });
 
 describe('Serviço de Integração com Google', () => {
@@ -46,9 +46,8 @@ describe('Serviço de Integração com Google', () => {
     const resultado = await obterRotaGoogle(origem, destino);
 
     const urlEsperada = `https://maps.googleapis.com/maps/api/directions/json?origin=${encodeURIComponent(origem)}&destination=${encodeURIComponent(destino)}&key=mocked-google-api-key`;
-    console.log('URL esperada:', urlEsperada);
-    console.log('Chamadas ao Axios:', mockedAxios.get.mock.calls);
-
+    // Remove sensitive logging in tests
+    
     // Comparar URLs removendo espaços e caracteres invisíveis
     const chamadaReal = mockedAxios.get.mock.calls[0][0].trim();
     expect(chamadaReal).toBe(urlEsperada.trim());

@@ -1,3 +1,7 @@
+// SECURITY WARNING: This file contains direct API key usage and should ONLY be used in backend/server environments
+// For frontend usage, use src/services/secureGregAI.ts which proxies through secure backend endpoints
+// DO NOT import this file in frontend components as it exposes sensitive API keys
+
 export async function triagemClinicaIA(historico: string, sintomas: string) {
   const payload = {
     model: 'gpt-4o',

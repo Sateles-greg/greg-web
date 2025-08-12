@@ -1,7 +1,7 @@
 
 import { registrarSimbiotico } from '../../services/memoriaSimbioticaAvancada';
 import { useGregAI } from '../../agents/greg-ai/useGregAI';
-import { triagemClinicaIA } from '../../agents/greg-ai/GregAI';
+import { triagemClinicaIA } from '../../services/secureGregAI';
 import { coletarDadosBiometricos } from '../../services/biometriaService';
 import { useState } from 'react';
 
