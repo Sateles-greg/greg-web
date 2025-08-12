@@ -1,6 +1,11 @@
+import type { 
+  PrivacyStatus, 
+  EventLogResult 
+} from '../types/biomed';
+
 // Serviço simulado de ética, privacidade e auditoria
 export const ethicsService = {
-  getPrivacyStatus: async () => ({
+  getPrivacyStatus: async (): Promise<PrivacyStatus> => ({
     criptografia: 'Ativa (AES-256, Quantum-ready)',
     consentimento: 'Granular e contínuo',
     compliance: ['HIPAA', 'LGPD', 'GDPR'],
@@ -19,13 +24,13 @@ export const ethicsService = {
     ],
     ultimoAudit: new Date().toISOString(),
   }),
-  getConsentOptions: async () => [
+  getConsentOptions: async (): Promise<string[]> => [
     'Compartilhar exames',
     'Compartilhar histórico familiar',
     'Permitir acesso a biossensores',
     'Permitir uso para pesquisa anônima',
   ],
-  logEvent: async (event: string, by: string) => ({
+  logEvent: async (event: string, by: string): Promise<EventLogResult> => ({
     status: 'Registrado',
     evento: event,
     por: by,

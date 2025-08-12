@@ -1,6 +1,13 @@
+import type { 
+  MedicalHistory, 
+  RealtimeBiosensorData, 
+  GenomicData, 
+  EnvironmentalData 
+} from '../types/biomed';
+
 // Serviço simulado de integração de dados biomédicos massivos
 export const biomedDataService = {
-  getUnifiedMedicalHistory: async () => ({
+  getUnifiedMedicalHistory: async (): Promise<MedicalHistory> => ({
     exames: ['Hemograma', 'Ressonância Magnética'],
     consultas: ['Cardiologista', 'Endocrinologista'],
     cirurgias: ['Apendicectomia'],
@@ -11,7 +18,7 @@ export const biomedDataService = {
     consentimento: true,
     atualizadoEm: new Date().toISOString(),
   }),
-  getRealtimeBiosensorData: async () => ({
+  getRealtimeBiosensorData: async (): Promise<RealtimeBiosensorData> => ({
     frequenciaCardiaca: 72 + Math.round(Math.random() * 5),
     oxigenacao: 98 + Math.round(Math.random()),
     temperatura: 36.5 + Math.random() * 0.5,
@@ -21,13 +28,13 @@ export const biomedDataService = {
     pressaoArterial: '120/80',
     timestamp: new Date().toISOString(),
   }),
-  getGenomicData: async () => ({
+  getGenomicData: async (): Promise<GenomicData> => ({
     predisposicoes: ['Diabetes tipo 2', 'Intolerância à lactose'],
     reacoesMedicamentos: ['Metformina: boa resposta'],
     proteomica: ['Proteína X elevada'],
     atualizadoEm: new Date().toISOString(),
   }),
-  getEnvironmentalData: async () => ({
+  getEnvironmentalData: async (): Promise<EnvironmentalData> => ({
     qualidadeAr: 'Boa',
     poluicaoSonora: 'Moderada',
     dieta: 'Mediterrânea',
