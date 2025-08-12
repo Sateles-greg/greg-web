@@ -1,4 +1,5 @@
 
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 // ...existing code...
 import styles from './BiomedPanel.module.css';
 import { biomedDataService } from '../../biomed/biomedDataService';
@@ -9,6 +10,7 @@ import { biomedKnowledgeService } from '../../biomed/biomedKnowledgeService';
 import { fhirService } from '../../biomed/fhirService';
 import { blockchainService } from '../../biomed/blockchainService';
 import { quantumSafeService } from '../../biomed/quantumSafeService';
+import { useInterval } from '../hooks/useTimer';
 
 // userId removido: não utilizado
 

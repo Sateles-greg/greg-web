@@ -1,4 +1,5 @@
-import React, { createContext, useContext, useState, ReactNode } from 'react';
+import React, { createContext, useContext, useState, ReactNode, useRef, useEffect } from 'react';
+import { useTimeout } from '../hooks/useTimer';
 
 interface ToastContextType {
   showToast: (msg: string, type?: 'info' | 'error' | 'success') => void;
@@ -10,10 +11,17 @@ export const useToast = () => useContext(ToastContext);
 
 export const ToastProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [toast, setToast] = useState<{ msg: string; type: string } | null>(null);
+  const [shouldClearToast, setShouldClearToast] = useState<number | null>(null);
+
+  // Use our custom timeout hook for proper cleanup
+  useTimeout(() => {
+    setToast(null);
+    setShouldClearToast(null);
+  }, shouldClearToast);
 
   function showToast(msg: string, type: 'info' | 'error' | 'success' = 'info') {
     setToast({ msg, type });
-    setTimeout(() => setToast(null), 3000);
+    setShouldClearToast(3000);
   }
 
   return (

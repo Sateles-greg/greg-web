@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { obterRespostaIA, IaResposta } from '../../services/iaCentralService';
 import { t, Lang } from '../i18n/index';
+import { useTimerControl } from '../hooks/useTimer';
 import styles from './ChatPanel.module.css';
 
 // Modo de chat: IA (default) ou colaborativo (P2P)
@@ -23,6 +24,7 @@ const ChatPanel: React.FC<{ lang?: Lang }> = ({ lang = 'pt' }) => {
   const [error, setError] = useState<string | null>(null);
   const [colabUser, setColabUser] = useState('');
   const inputRef = useRef<HTMLInputElement>(null);
+  const { setManagedTimeout } = useTimerControl();
 
   // Envia mensagem para IA
   async function sendToIA() {
@@ -47,7 +49,7 @@ const ChatPanel: React.FC<{ lang?: Lang }> = ({ lang = 'pt' }) => {
   function sendToColab() {
     if (!input.trim() || !colabUser) return;
     setChat(c => [...c, { text: input, sender: 'user', timestamp: Date.now() }]);
-    setTimeout(() => {
+    setManagedTimeout(() => {
       setChat(c => [...c, { text: t('resposta_colab', lang), sender: 'colab', timestamp: Date.now() }]);
     }, 1200);
     setInput('');
