@@ -15,6 +15,9 @@ dist-ssr
 *.local
 .env
 
+# Test files
+test-security-logger.cjs
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
