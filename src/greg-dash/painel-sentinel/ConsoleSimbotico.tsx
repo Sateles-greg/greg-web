@@ -4,12 +4,13 @@ import { useGregAI } from '../../agents/greg-ai/useGregAI';
 import { triagemClinicaIA } from '../../agents/greg-ai/GregAI';
 import { coletarDadosBiometricos } from '../../services/biometriaService';
 import { useState } from 'react';
+import type { TipoRegistroSimbotico } from '../../types/biomed';
 
 export default function ConsoleSimbotico() {
   const { simular } = useGregAI();
   const [resultado, setResultado] = useState<string>('');
   const [input, setInput] = useState<string>('');
-  const [tipoRegistro, setTipoRegistro] = useState<'crenca' | 'principio' | 'aprendizado'>('crenca');
+  const [tipoRegistro, setTipoRegistro] = useState<TipoRegistroSimbotico>('crenca');
   const [conteudoRegistro, setConteudoRegistro] = useState<string>('');
 
   const registrarMemoria = () => {
@@ -41,7 +42,11 @@ export default function ConsoleSimbotico() {
 
       {/* Bloco de registro simbiótico */}
       <div className="console-simbotico-memoria">
-        <select title="Tipo de registro simbiótico" value={tipoRegistro} onChange={e => setTipoRegistro(e.target.value as any)}>
+        <select 
+          title="Tipo de registro simbiótico" 
+          value={tipoRegistro} 
+          onChange={e => setTipoRegistro(e.target.value as TipoRegistroSimbotico)}
+        >
           <option value="crenca">Crença</option>
           <option value="principio">Princípio</option>
           <option value="aprendizado">Aprendizado</option>

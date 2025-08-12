@@ -1,7 +1,12 @@
+import type { 
+  BlockchainEventResult, 
+  AuditTrailEntry 
+} from '../types/biomed';
+
 // Integração simulada/real com blockchain para auditoria de eventos biomédicos
 // Exemplo: registro de evento em blockchain (mock ou API real)
 export const blockchainService = {
-  async registerEvent(event: string, by: string) {
+  async registerEvent(event: string, by: string): Promise<BlockchainEventResult> {
     // Aqui você pode integrar com uma API real de blockchain (Hyperledger, Ethereum, etc)
     // Exemplo mock:
     return {
@@ -12,7 +17,7 @@ export const blockchainService = {
       timestamp: new Date().toISOString(),
     };
   },
-  async getAuditTrail() {
+  async getAuditTrail(): Promise<AuditTrailEntry[]> {
     // Retorna trilha de auditoria mock
     return [
       {

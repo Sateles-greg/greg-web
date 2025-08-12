@@ -1,6 +1,12 @@
+import type { 
+  MedicalLiterature, 
+  ClinicalGuideline, 
+  ResearchGap 
+} from '../types/biomed';
+
 // Serviço simulado de base de conhecimento médico global
 export const biomedKnowledgeService = {
-  getLatestLiterature: async () => [
+  getLatestLiterature: async (): Promise<MedicalLiterature[]> => [
     {
       titulo: 'Avanços em IA para Diagnóstico Médico',
       fonte: 'Lancet',
@@ -12,7 +18,7 @@ export const biomedKnowledgeService = {
       ano: 2024,
     },
   ],
-  getClinicalGuidelines: async (_condition: string) => [
+  getClinicalGuidelines: async (_condition: string): Promise<ClinicalGuideline[]> => [
     {
       condicao: _condition,
       diretriz: 'Seguir protocolo XYZ',
@@ -20,7 +26,7 @@ export const biomedKnowledgeService = {
       ano: 2025,
     },
   ],
-  identifyResearchGaps: async () => [
+  identifyResearchGaps: async (): Promise<ResearchGap[]> => [
     { area: 'Doenças Raras', descricao: 'Pouca evidência clínica disponível' },
     {
       area: 'Farmacogenômica',
